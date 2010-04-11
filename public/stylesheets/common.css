@@ -1,0 +1,44 @@
+* { padding: 0; margin: 0; color: #444; }
+
+body {
+    margin: 0 auto;
+    background: #F6F5F7;
+    font: normal 14px arial;
+    color: #555;
+}
+
+a {
+    color: #0066B2;
+    text-decoration: none;
+}
+a:hover {
+    color: #0066B2;
+    text-decoration: underline;
+}
+
+input {
+    width: 100%;
+    font: normal 18px arial;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    padding: 1px;
+}
+input:focus {
+    border: 1px solid #6CAAD9;
+    background: #FFFFDF;
+}
+
+label {
+    font: normal 21px arial;
+    margin: 10px 0 0 -1px;
+}
+
+h1 {
+    font: normal 20px arial;
+}
+
+p {
+    font: normal 14px arial;
+    padding: 5px 0 5px 0;
+}

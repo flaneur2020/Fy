@@ -1,0 +1,58 @@
+
+#main {
+    width: 370px;
+    margin: auto;
+    margin-top: 100px;
+    background: #fff;
+    padding: 20px;
+}
+
+#main span.alert {
+    display: block;
+    width: 355px;
+    margin: 5px 0 5px 5px;
+    padding: 5px;
+    border: 1px solid #FFCC00;
+    background: #FFFFBF;
+}
+
+#main #about {
+    float: right;
+    text-align: right;
+}
+
+#main h1 {
+    font: normal 35px arial;
+    color: #aaa;
+}
+
+#main form table{
+    color: #777;
+}
+
+#main form table tr {
+    height: 45px;
+}
+
+#main form table th {
+    text-align: right;
+    font: normal 13px arial;
+}
+
+#main form input {
+    font: normal 14px arial;
+    padding: 2px 0 0 2px;
+    height: 25px;
+    width: 160px;
+}
+
+#main p {
+    color: #DFDFDF;
+}
+
+#main form button {
+    padding: 2px;
+    font: normal 15px arial;
+}
+
+

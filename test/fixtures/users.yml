@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+
+0:
+    name: root
+    pass: 123456
+    role_id: 0
+
+1: 
+    name: visitor
+    pass: aaaaaa
+    role_id: 1
+
+2:
+    name: ssword
+    pass: aaaaaa
+    role_id: 2
+
+3:
+    name: fleurer
+    pass: aaaaaa
+    role_id: 2
