@@ -1,5 +1,5 @@
 function init_editor(textarea_id) {
-    new TINY.editor.edit('editor',{
+    return new TINY.editor.edit('editor',{
             id: textarea_id, // (required) ID of the textarea
             width:'100%', // (optional) width of the editor
             height:250, // (optional) heightof the editor

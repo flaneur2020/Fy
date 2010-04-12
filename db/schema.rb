@@ -12,7 +12,7 @@
 ActiveRecord::Schema.define(:version => 20100411054120) do
 
   create_table "posts", :force => true do |t|
-    t.string   "titile"
+    t.string   "title"
     t.integer  "user_id"
     t.text     "content"
     t.datetime "created_at"

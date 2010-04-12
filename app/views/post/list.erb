@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <style>
+            @import url(/stylesheets/common.css);
+            @import url(/stylesheets/admin.css);
+        </style>
+
+
+        <script type="text/javascript" src="/javascripts/vendor/jquery.js"></script> 
+
+        <script>
+        </script>
+
+        <title>List - Ycms</title>
+    </head>
+    <body>
+        <div id="head">
+            <h1 id="name">(Y 'Fleurer) | <a href="">注销</a></h1>
+            <ul class="nav">
+                <li><a href="" class="cur">首页</a></li>
+                <li><a href="">文章</a></li>
+                <li><a href="">评论</a></li>
+                <li><a href="">页面</a></li>
+                <li><a href="">用户</a></li>
+                <li><a href="">设置</a></li>
+            </ul>
+            <ul class="nav sub-nav">
+                <li><a href="">新文章</a></li>
+                <li><a href="">审核评论</a></li>
+            </ul>
+        </div>
+        <div id="main">
+            <h1>文章列表</h1>
+            <span class="alert">cheers~ xxx successfully! </span>
+            <span class="alert error">orz~ </span>
+            
+            <div id="list-main">
+                <span class="list-nav">
+                    <span class="filter">
+                        <select> <option value="default">全部目录</option> </select>
+                        <select> <option value="default">全部日期</option> </select>
+                        <button>过滤</button>
+                    </span>
+                    <span class="pagi"> 前一页 | 1 2 3 4 5 | 后一页 </span>
+                </span>
+                <table>
+                    <thead>
+                        <tr> 
+                            <th id="select"> 
+                                <input type="checkbox"></input>
+                            </th>
+                            <th id="title">标题</th>    
+                            <th id="category">目录</th>    
+                            <th id="author">作者</th>    
+                            <th id="date">日期</th>    
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <% for post in @posts%>
+                        <tr>
+                            <th>
+                                <input type="checkbox"></input>
+                            </th>
+                            <th>
+                                <%=link_to post.title, :action=>:view, :id=>post.id%>
+                                <span class="act">
+                                  <a href="<%=url_for :action=>:edit, :id=>post.id%>">编辑</a> 
+                                  <a href="<%=url_for :action=>:rm, :id=>post.id%>" style="color:red;">删除</a> 
+                                  <a href="<%=url_for :action=>:view, :id=>post.id%>">查看</a> 
+                                </span>
+                            </th>
+                            <th><a href="#">默认</a></th>
+                            <th><a href="#">Fleurer</a></th>
+                            <th>2010/10/2 21:20</th>
+                        </tr>
+                      <% end #for %>
+                    </tbody>
+                    <tfoot>
+                        <tr> 
+                            <th id="select">
+                                <input type="checkbox"></input>
+                            </th>
+                            <th id="title">标题</th>    
+                            <th id="category">目录</th>    
+                            <th id="author">作者</th>    
+                            <th id="date">日期</th>    
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <span class="list-nav">
+                    <span class="filter">
+                        <select> <option value="default">批量操作</option> </select>
+                        <button>应用</button>
+                    </span>
+                    <span class="pagi"> 前一页 | 1 2 3 4 5 | 后一页 </span>
+                </span>
+            </div>
+        </div>
+        <div id="foot">
+            blah~ cc (Y 'cmor)
+        </div>
+    </body>
+</html>
+

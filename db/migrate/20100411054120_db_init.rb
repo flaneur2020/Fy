@@ -9,7 +9,7 @@ class DbInit < ActiveRecord::Migration
     end
 
     create_table :posts do |t|
-      t.string    :titile
+      t.string    :title
       t.integer   :user_id
       t.text      :content
       t.timestamps
