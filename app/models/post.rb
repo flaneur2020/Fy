@@ -1,3 +1,3 @@
 class Post < ActiveRecord::Base
-    has_one :meta
+  belongs_to :user
 end

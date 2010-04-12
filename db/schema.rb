@@ -9,33 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100411064619) do
-
-  create_table "auths", :force => true do |t|
-    t.string  "name"
-    t.integer "role_id"
-  end
-
-  create_table "metas", :force => true do |t|
-    t.string  "title"
-    t.integer "user_id"
-    t.integer "obj_id"
-    t.string  "obj_type"
-    t.integer "state"
-  end
+ActiveRecord::Schema.define(:version => 20100411054120) do
 
   create_table "posts", :force => true do |t|
-    t.text "content"
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string "name"
+    t.string   "titile"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string  "name"
-    t.string  "pass"
-    t.integer "role_id"
+    t.string   "name"
+    t.string   "pass"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

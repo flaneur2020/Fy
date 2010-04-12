@@ -1,30 +1,14 @@
 class User < ActiveRecord::Base
-  has_one :role
+  has_many :posts
 
-  # consts on ROLE
-  RROOT     = 0
-  RVISITOR  = 1
-  RUSER     = 2
-
-  def self.login(user)
-    name = user[:name]
-    pass = user[:pass]
-    user = User.find_by_name_and_pass(name, pass)
-    # TODO here set cookie and blah~
-    if user
-      @@current = user 
+  def self.login(name, pass)
+    user = User.find_by_name(name)
+    if user && user.pass == pass
+      return user
     end
-    return user
+    return nil
   end
-  def self.current
-    @@current || self.visitor
-  end
-  def self.visitor
-    nil
-  end
-  
+
   def can(name)
-  end
-  def login?
   end
 end
