@@ -1,2 +1,5 @@
 *.sqlite3
-tmp/*
+log/*.log
+tmp/**/*
+doc/api
+doc/app
