@@ -1,7 +1,8 @@
 <%= 
-  @title   = '添加文章'
-  @current = '文章'
-  render :partial => "share/head"
+  render :partial => "share/head", :locals => {
+    :cur   => :post,
+    :title => '新文章'
+  }
 %>
 
 <!-- about editor -->
@@ -18,7 +19,7 @@
 </script>
 
 <div id="main">
-  <h1><%=@title%></h1>
+  <h1>新文章</h1>
   <span class="alert error">orz~ </span>
 
   <% form_for :post, :action=>:add, :html=>{:id=>'post_form'} do |f| %>

@@ -48,7 +48,7 @@
     color: #000;
 }
 
-#head ul.sub-nav li:before {
+#head ul.sub-nav li:after {
     content: "|";
 }
 
@@ -173,8 +173,8 @@
 }
 
 #main #list-main #select { width: 20px; }
-#main #list-main #title { width: 600px; }
-#main #list-main #author { width: 100px; }
-#main #list-main #date { width: 120px; }
+#main #list-main #title { ; }
 #main #list-main #category { width: 100px; }
+#main #list-main #author { width: 100px; }
+#main #list-main #date { width: 90px; }
 

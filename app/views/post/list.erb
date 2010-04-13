@@ -1,4 +1,9 @@
-<%= render :partial=>'share/head'%>
+<%= 
+  render :partial => "share/head", :locals => {
+    :cur   => :post,
+    :title => '文章列表'
+  }
+%>
 
     <div id="main">
       <h1>文章列表</h1>

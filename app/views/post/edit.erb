@@ -1,63 +1,67 @@
-<%= render :partial => "share/head" %>
-        
-        <!-- about editor -->
-        <link rel="stylesheet" type="text/css" href="/javascripts/vendor/tinyeditor/style.css" />
-        <script type="text/javascript" src="/javascripts/vendor/tinyeditor/tinyeditor.js"></script> 
-        <script type="text/javascript" src="/javascripts/editor.js"> </script>
-        <script>
-            $(function(){
-                var editor = init_editor('post_content');
-                $('#post_form').bind('submit', function(){
-                    editor.post();
-                });
-            });
-        </script>
+<%= 
+  render :partial => "share/head", :locals => {
+    :cur   => :post,
+    :title => '编辑'
+  }
+%>
 
-        <div id="main">
-            <h1>编辑</h1>
-            <% if flash[:notice] %>
-              <span class="alert"><%=flash[:notice]%> | <%= link_to '查看', :action => :view, :id=>@post.id %></span>
-            <% end #if %>
-            <span class="alert error">orz~ </span>
+<!-- about editor -->
+<link rel="stylesheet" type="text/css" href="/javascripts/vendor/tinyeditor/style.css" />
+<script type="text/javascript" src="/javascripts/vendor/tinyeditor/tinyeditor.js"></script> 
+<script type="text/javascript" src="/javascripts/editor.js"> </script>
+<script>
+  $(function(){
+    var editor = init_editor('post_content');
+    $('#post_form').bind('submit', function(){
+      editor.post();
+    });
+  });
+</script>
 
-            <% form_for :post, :action=>:edit, :html=>{:id=>'post_form'} do |f| %>
-            <div id="left">
+<div id="main">
+  <h1><%=@title%></h1>
+  <span class="alert error">orz~ </span>
 
-                <div class="blc-raw">
-                      <label>标题</label>
-                      <p>
-                      <%= f.text_field :title, :class => 'title' %>
-                      </p>
-                      <label>内容</label>
-                      <p>
-                          <%= f.text_area :content %>
-                      </p>
-                </div>
-                <div class="blc">
-                    <h2>文章选项</h2> 
-                    <div class="content">
-                        <p>it's a blc</p>
-                    </div>
-                </div>
+  <% form_for :post, :action=>:edit, :html=>{:id=>'post_form'} do |f| %>
+    <div id="left">
 
-            </div>
-            <div id="right">
-
-                <div class="blc">
-                    <h2>发布</h2> 
-                    <div class="content">
-                        <p>状态：未发布</p>
-                        <p>操作：<button>发布</button></p>
-                    </div>
-                </div>
-                <div class="blc">
-                    <h2>分类</h2> 
-                    <div class="content">
-                        <p>it's a blc</p>
-                    </div>
-                </div>
-            <% end #form %>
-            </div>
+      <div class="blc-raw">
+        <label>标题</label>
+        <p>
+        <%= f.text_field :title, :class => 'title' %>
+        </p>
+        <label>内容</label>
+        <p>
+        <%= f.text_area :content %>
+        </p>
+      </div>
+      <div class="blc">
+        <h2>文章选项</h2> 
+        <div class="content">
+          <p>it's a blc</p>
         </div>
+      </div>
+
+    </div>
+    <div id="right">
+
+      <div class="blc">
+        <h2>发布</h2> 
+        <div class="content">
+          <p>状态：未发布</p>
+          <p>操作：<button>发布</button></p>
+        </div>
+      </div>
+      <div class="blc">
+        <h2>分类</h2> 
+        <div class="content">
+          <p>it's a blc</p>
+        </div>
+      </div>
+    </div>
+  <% end %><%#form%>
+</div>
 
 <%= render :partial=>'share/foot'%>
+
+

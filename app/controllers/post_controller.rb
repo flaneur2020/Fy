@@ -1,6 +1,10 @@
 class PostController < ApplicationController
   before_filter :check_login
 
+  def index
+    redirect_to :action => :add
+  end
+
   def list
     @posts = Post.find(:all, :order=>'id desc')
   end

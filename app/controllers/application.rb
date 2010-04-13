@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '2f8d42c468821c1b5e8edbeadc9c6450'
 
+  protected
   def current_user
     User.find(session[:user_id])
   end
