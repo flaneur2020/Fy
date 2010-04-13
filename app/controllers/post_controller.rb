@@ -1,11 +1,16 @@
 class PostController < ApplicationController
+  before_filter :check_login
+
   def list
-    @posts = Post.find(:all)
+    @posts = Post.find(:all, :order=>'id desc')
   end
   def add
     if request.post?
       # blah~
-      @post = Post.create(params[:post])
+      @post = Post.new(params[:post])
+      @post.user = current_user
+      @post.save
+      flash[:notice] = 'posted successfully!'
       redirect_to :action => :edit,
                   :id     => @post.id
     end
@@ -14,7 +19,8 @@ class PostController < ApplicationController
     @post = Post.find(params[:id])
     if request.post?
       @post = Post.find(params[:id])
-      #@post.update(params[:post])
+      @post.update_attributes(params[:post])
+      flash[:notice] = 'posted successfully!'
       redirect_to :action => :edit,
                   :id     => @post.id
     end
@@ -22,6 +28,7 @@ class PostController < ApplicationController
   def rm
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:notice] = "the post '#{@post.title}' have been deleted"
     redirect_to :action => :list
   end
 end

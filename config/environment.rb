@@ -43,7 +43,7 @@ Rails::Initializer.run do |config|
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
   # Run "rake -D time" for a list of tasks for finding time zone names. Comment line to use default local time.
-  config.time_zone = 'UTC'
+  # config.time_zone = 'UTC'
 
   # The internationalization framework can be changed to have another default locale (standard is :en) or more load paths.
   # All files from config/locales/*.rb,yml are added automatically.
@@ -72,4 +72,11 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+
+  ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(
+    :default => '%Y/%m/%d',
+    :date_time12  => "%Y/%m/%d %I:%M%p",
+    :date_time24  => "%Y/%m/%d %H:%M"
+  )
+
 end

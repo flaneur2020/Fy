@@ -16,7 +16,7 @@ class UserController < ApplicationController
         })
       else 
         # login failed
-        raise
+        raise 'login failed'
       end
     end
   rescue

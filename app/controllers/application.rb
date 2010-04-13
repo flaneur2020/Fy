@@ -12,8 +12,10 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id])
   end
   def check_login
-    unless session[:user_id]
-      flash[:from] = request.parameters
+    if session[:user_id]
+      @current_user = current_user
+    else
+      flash[:from]   = request.parameters
       flash[:notice] = 'please login first'
       redirect_to :controller => :user,
                   :action     => :login

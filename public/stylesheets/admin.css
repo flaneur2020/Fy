@@ -136,7 +136,6 @@
 }
 #main .list-nav .filter {
     text-align: left;
-    
 }
 
 #main #list-main {
@@ -163,6 +162,7 @@
 #main #list-main tbody .act {
     display: none;
     float: right;
+    margin-bottom: 0px;
     padding: 0 10px 0 0;
 }
 #main #list-main tbody tr:hover {

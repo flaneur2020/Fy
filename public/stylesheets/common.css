@@ -16,7 +16,7 @@ a:hover {
     text-decoration: underline;
 }
 
-input {
+input[type="text"] {
     width: 100%;
     font: normal 18px arial;
     height: 30px;
@@ -24,7 +24,20 @@ input {
     border: 1px solid #ccc;
     padding: 1px;
 }
-input:focus {
+input[type="text"]:focus {
+    border: 1px solid #6CAAD9;
+    background: #FFFFDF;
+}
+
+input[type="password"] {
+    width: 100%;
+    font: normal 18px arial;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    padding: 1px;
+}
+input[type="password"]:focus {
     border: 1px solid #6CAAD9;
     background: #FFFFDF;
 }
