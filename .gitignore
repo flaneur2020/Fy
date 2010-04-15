@@ -1,5 +1,6 @@
-*.sqlite3
 log/*.log
 tmp/**/*
+.DS_Store
+public/cache/**/*
 doc/api
 doc/app
