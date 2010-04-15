@@ -133,7 +133,19 @@
     float: right;
     font: normal 13px arial;
     line-height: 20px;
+    overflow: hidden;
 }
+#main .list-nav .pagi a,span {
+    padding: 0 5px 0 5px;
+    margin-left: -10px;
+}
+#main .list-nav .pagi a:hover {
+    background: #B1D3EC;
+    color: #fff;
+}
+#main .list-nav .pagi span.current { 
+}
+
 #main .list-nav .filter {
     text-align: left;
 }

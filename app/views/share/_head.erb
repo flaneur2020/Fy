@@ -33,7 +33,10 @@
     </head>
     <body>
         <div id="head">
-            <h1 id="name">欢迎，<%= link_to @current_user.name %> | <a href="">注销</a></h1>
+            <h1 id="name">欢迎，
+              <%= link_to @current_user.name %> |
+              <%= link_to '注销', :controller=>:user, :action=>:logout%>
+            </h1>
             <ul class="nav">
               <% 
                 tabs.each do |k, v|

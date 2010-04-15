@@ -73,10 +73,16 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
+  # for format of datetime 
   ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(
     :default => '%Y/%m/%d',
     :date_time12  => "%Y/%m/%d %I:%M%p",
     :date_time24  => "%Y/%m/%d %H:%M"
   )
+
+  # for pagination
+  config.gem 'mislav-will_paginate', 
+    :lib => 'will_paginate', 
+    :source => 'http://gems.github.com' 
 
 end

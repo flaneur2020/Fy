@@ -18,9 +18,17 @@ class DbInit < ActiveRecord::Migration
     User.create(
       :name=>'root', 
       :pass=>'123456')
-    User.create(
+    ssword=User.create(
       :name=>'ssword',
       :pass=>'aaaaaa')
+
+    100.times do |i|
+      Post.create(
+        :title=>"test post #{i}",
+        :content=>'blah~'
+        :user =>ssword
+      )
+    end
   end
 
   def self.down

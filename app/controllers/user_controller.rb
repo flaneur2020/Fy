@@ -9,7 +9,7 @@ class UserController < ApplicationController
       user = User.login(name, pass)
       if user
         session[:user_id] = user.id
-        # people may login from everywhere. let him go back
+        # TODO: people may login from everywhere. let him go back
         redirect_to(flash[:from] || {
           :controller => :admin,
           :action     => :index

@@ -7,10 +7,13 @@
 
     <div id="main">
       <h1>文章列表</h1>
+      
       <% if flash[:notice] %>
         <span class="alert"><%=flash[:notice]%></span>
       <% end -%>
-      <span class="alert error">orz~ </span>
+      <% (flash[:errors] || []).each do |err| %>
+        <span class="alert error"><%=err%></span>
+      <% end -%>
 
       <div id="list-main">
         <span class="list-nav">
@@ -19,7 +22,7 @@
             <select> <option value="default">全部日期</option> </select>
             <button>过滤</button>
           </span>
-          <span class="pagi"> 前一页 | 1 2 3 4 5 | 后一页 </span>
+          <span class="pagi"> <%= will_paginate @posts %> </span>
         </span>
         <table>
           <thead>
@@ -43,7 +46,7 @@
                   <%=link_to post.title, :action=>:view, :id=>post.id%>
                   <span class="act">
                     <%=link_to '编辑', :action=>:edit, :id=>post.id %> 
-                    <%=link_to '删除', {:action=>:rm, :id=>post.id}, {:confirm=>"真的要删除文章'"+post.title+">嘛？", :style=>'color:red'} %>
+                    <%=link_to '删除', {:action=>:rm, :id=>post.id}, {:confirm=>"真的要删除文章'"+post.title+"'嘛？", :style=>'color:red'} %>
                     <%=link_to '查看', :action=>:view, :id=>post.id %> 
                   </span>
                 </th>
@@ -71,7 +74,7 @@
             <select> <option value="default">批量操作</option> </select>
             <button>应用</button>
           </span>
-          <span class="pagi"> 前一页 | 1 2 3 4 5 | 后一页 </span>
+          <span class="pagi"> <%= will_paginate @posts%> </span>
         </span>
       </div>
     </div>

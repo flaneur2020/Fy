@@ -1,7 +1,7 @@
 <%= 
   render :partial => "share/head", :locals => {
     :cur   => :post,
-    :title => '新文章'
+    :title => '撰写'
   }
 %>
 
@@ -19,8 +19,12 @@
 </script>
 
 <div id="main">
-  <h1>新文章</h1>
-  <span class="alert error">orz~ </span>
+  <h1>撰写</h1>
+
+  <%# errors %>
+  <% (flash[:errors] || []).each do |err| %>
+    <span class="alert error"><%=err%></span>
+  <% end -%>
 
   <% form_for :post, :action=>:add, :html=>{:id=>'post_form'} do |f| %>
     <div id="left">
