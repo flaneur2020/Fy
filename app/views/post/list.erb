@@ -6,7 +6,10 @@
 %>
 
     <div id="main">
-      <h1>文章列表</h1>
+      <h1> 文章列表 
+        <%= '/' + @_category.name rescue ''%>
+        <%= '/' + @_user.name rescue ''%>
+      </h1>
       
       <% if flash[:notice] %>
         <span class="alert"><%=flash[:notice]%></span>
@@ -50,8 +53,8 @@
                     <%=link_to '查看', :action=>:view, :id=>post.id %> 
                   </span>
                 </th>
-                <th class="category"><%=link_to post.category.name, :action=>:list, :category_id=>post.category.id rescue '...'%></th>
-                <th class="user"><%=link_to post.user.name, :controller=>:user, :action=>:view, :id=>post.user.id%></th>
+                <th class="category"><%=link_to post.category.name, :category_id=>post.category.id rescue '...'%></th>
+                <th class="user"><%=link_to post.user.name, :user_id=>post.user.id%></th>
                 <th class="date"><%=post.updated_at%></th>
               </tr>
             <% end %>

@@ -6,8 +6,22 @@ class PostController < ApplicationController
   end
 
   def list
-    page  = params[:page] || 1
-    @posts = Post.paginate(:all, :page=>page, :per_page=>15, :order=>'id desc')
+    page = params[:page] || 1
+    #filters
+    cond = {} 
+    if cid=params[:category_id]
+      cond[:category_id] = cid 
+      @_category = Category.find(cid)
+    end
+    if uid=params[:user_id]
+      cond[:user_id] = uid
+      @_user = User.find(uid)
+    end
+    @posts = Post.paginate(:all, 
+                           :page=>page,
+                           :conditions=>cond, 
+                           :order=>'id desc', 
+                           :per_page=>15)
   end
   
   def add
@@ -37,6 +51,8 @@ class PostController < ApplicationController
         flash[:errors] = @post.errors
       end
     end
+  rescue ActiveRecord::RecordNotFound => err
+    redirect_to_404
   end
 
   def rm
