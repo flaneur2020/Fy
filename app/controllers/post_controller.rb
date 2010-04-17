@@ -5,9 +5,10 @@ class PostController < ApplicationController
     redirect_to :action => :add
   end
 
+  # TODO: added rescue for find
   def list
     page = params[:page] || 1
-    #filters
+    # filters
     cond = {} 
     if cid=params[:category_id]
       cond[:category_id] = cid 
