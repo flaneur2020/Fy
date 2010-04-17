@@ -16,7 +16,7 @@ class DbInit < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :category do |t|
+    create_table :categories do |t|
       t.string    :name
     end
 
@@ -37,8 +37,8 @@ class DbInit < ActiveRecord::Migration
       )
     end
 
-    Category.create do (
-      :name => 'default'
+    Category.create (
+      :name=>'default'
     )
   end
 

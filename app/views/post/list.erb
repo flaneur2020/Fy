@@ -27,13 +27,13 @@
         <table>
           <thead>
             <tr> 
-              <th id="select"> 
+              <th class="select"> 
                 <input type="checkbox"></input>
               </th>
-              <th id="title">标题</th>    
-              <th id="category">目录</th>    
-              <th id="author">作者</th>    
-              <th id="date">日期</th>    
+              <th class="title">标题</th>    
+              <th class="category">目录</th>    
+              <th class="author">作者</th>    
+              <th class="date">日期</th>    
             </tr>
           </thead>
           <tbody>
@@ -42,7 +42,7 @@
                 <th>
                   <input type="checkbox"></input>
                 </th>
-                <th>
+                <th class="title">
                   <%=link_to post.title, :action=>:view, :id=>post.id%>
                   <span class="act">
                     <%=link_to '编辑', :action=>:edit, :id=>post.id %> 
@@ -50,9 +50,9 @@
                     <%=link_to '查看', :action=>:view, :id=>post.id %> 
                   </span>
                 </th>
-                <th><a href="#">默认</a></th>
-                <th><%=link_to post.user.name, :controller=>:user, :action=>:view, :id=>post.user.id%></th>
-                <th><%=post.updated_at%></th>
+                <th class="category"><%=link_to post.category.name, :action=>:list, :category_id=>post.category.id rescue '...'%></th>
+                <th class="user"><%=link_to post.user.name, :controller=>:user, :action=>:view, :id=>post.user.id%></th>
+                <th class="date"><%=post.updated_at%></th>
               </tr>
             <% end %>
           </tbody>
@@ -61,10 +61,10 @@
               <th id="select">
                 <input type="checkbox"></input>
               </th>
-              <th id="title">标题</th>    
-              <th id="category">目录</th>    
-              <th id="author">作者</th>    
-              <th id="date">日期</th>    
+              <th class="title">标题</th>    
+              <th class="category">目录</th>    
+              <th class="author">作者</th>    
+              <th class="date">日期</th>    
             </tr>
           </tfoot>
         </table>

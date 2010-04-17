@@ -59,7 +59,7 @@
       <div class="blc">
         <h2>分类</h2> 
         <div class="content">
-          <p>it's a blc</p>
+          <%= select_tag :category, options_for_select(Category.find(:all).map{|c| c.name }) %>
         </div>
       </div>
     </div>

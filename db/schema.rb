@@ -11,10 +11,15 @@
 
 ActiveRecord::Schema.define(:version => 20100411054120) do
 
+  create_table "categories", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.integer  "user_id"
     t.text     "content"
+    t.integer  "user_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

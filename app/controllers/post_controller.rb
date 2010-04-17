@@ -15,6 +15,7 @@ class PostController < ApplicationController
       # blah~
       @post = Post.new(params[:post])
       @post.user = current_user
+      @post.category = Category.find_by_name(params[:category])
       if @post.save
         flash[:notice] = 'posted successfully!'
         redirect_to :action => :edit,
