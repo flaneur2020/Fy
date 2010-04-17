@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20100411054120) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "category_id"
+    t.string   "state",       :default => "draft"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

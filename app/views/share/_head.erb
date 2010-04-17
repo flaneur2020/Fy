@@ -11,7 +11,9 @@
       :sub_tabs  => [
         ['新文章', url_for(:action => :add)],
         ['管理',   url_for(:action => :list)],
-        ['回收站', '']
+        ['已发布', url_for(:action => :list, :state => :published)],
+        ['草稿',   url_for(:action => :list, :state => :draft)],
+        ['回收站', url_for(:action => :list, :state => :removed)]
       ]
     }
   }

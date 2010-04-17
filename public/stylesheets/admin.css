@@ -193,7 +193,7 @@
     background: #D7E8F5;
 }
 #main #list-main tbody tr:hover .act {
-    display: block;
+    display: inline;
 }
 
 #main #list-main .select { width: 20px; }
@@ -202,3 +202,6 @@
 #main #list-main .author { width: 100px; }
 #main #list-main .date { width: 90px; }
 
+#main #list-main tr.published   { background: #E6FFDF; }
+#main #list-main tr.draft       { background: #FFFCDF; }
+#main #list-main tr.removed     { background: #FAFAFB; }

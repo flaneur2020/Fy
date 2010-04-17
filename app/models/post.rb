@@ -5,4 +5,13 @@ class Post < ActiveRecord::Base
   # validations 
   validates_presence_of :title, 
                         :user
+
+  def remove
+    self.state = 'removed'
+  end
+
+  def publish
+    self.state = 'published'
+  end
+
 end

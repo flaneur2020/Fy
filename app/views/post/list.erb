@@ -1,15 +1,17 @@
 <%= 
+  title = "文章"
+  title += '/' + params[:state] rescue ''
+  title += '/' + params[:category] rescue ''
+  title += '/' + params[:user] rescue ''
+
   render :partial => "share/head", :locals => {
     :cur   => :post,
-    :title => '文章列表'
+    :title => title
   }
 %>
 
     <div id="main">
-      <h1> 文章列表 
-        <%= '/' + @_category.name rescue ''%>
-        <%= '/' + @_user.name rescue ''%>
-      </h1>
+      <h1><%=title%></h1>
       
       <% if flash[:notice] %>
         <span class="alert"><%=flash[:notice]%></span>
@@ -41,20 +43,24 @@
           </thead>
           <tbody>
             <% @posts.each do |post| %>
-              <tr valign="top">
+              <tr valign="top" class="<%=post.state%>">
                 <th>
                   <input type="checkbox"></input>
                 </th>
                 <th class="title">
                   <%=link_to post.title, :action=>:view, :id=>post.id%>
                   <span class="act">
-                    <%=link_to '编辑', :action=>:edit, :id=>post.id %> 
-                    <%=link_to '删除', {:action=>:rm, :id=>post.id}, {:confirm=>"真的要删除文章'"+post.title+"'嘛？", :style=>'color:red'} %>
-                    <%=link_to '查看', :action=>:view, :id=>post.id %> 
+                    <%=link_to '编辑', {:action=>:edit, :id=>post.id} %> 
+                    <%=link_to '删除', {:action=>:rm,   :id=>post.id}, {:confirm=>"真的要删除文章'"+post.title+"'嘛？", :style=>'color:red'} %>
+                    <%=link_to '查看', {:action=>:view, :id=>post.id} %> 
                   </span>
                 </th>
-                <th class="category"><%=link_to post.category.name, :category_id=>post.category.id rescue '...'%></th>
-                <th class="user"><%=link_to post.user.name, :user_id=>post.user.id%></th>
+                <th class="category">
+                  <%=link_to post.category.name, params.merge(:category=>post.category.name) rescue '...'%>
+                </th>
+                <th class="user">
+                  <%=link_to post.user.name, params.merge(:user=>post.user.name)%>
+                </th>
                 <th class="date"><%=post.updated_at%></th>
               </tr>
             <% end %>
