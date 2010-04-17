@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       @current_user = current_user
     else
-      flash[:from]   = request.parameters
+      flash[:from]   = request.path
       flash[:notice] = 'please login first'
       redirect_to :controller => :user,
                   :action     => :login

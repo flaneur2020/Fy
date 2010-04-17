@@ -10,11 +10,17 @@ class DbInit < ActiveRecord::Migration
 
     create_table :posts do |t|
       t.string    :title
-      t.integer   :user_id
       t.text      :content
+      t.integer   :user_id
+      t.integer   :category_id
       t.timestamps
     end
 
+    create_table :category do |t|
+      t.string    :name
+    end
+
+    # init users
     User.create(
       :name=>'root', 
       :pass=>'123456')
@@ -22,13 +28,18 @@ class DbInit < ActiveRecord::Migration
       :name=>'ssword',
       :pass=>'aaaaaa')
 
+    # init Posts
     100.times do |i|
       Post.create(
         :title=>"test post #{i}",
-        :content=>'blah~'
+        :content=>'blah~',
         :user =>ssword
       )
     end
+
+    Category.create do (
+      :name => 'default'
+    )
   end
 
   def self.down

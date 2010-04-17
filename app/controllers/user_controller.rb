@@ -9,8 +9,8 @@ class UserController < ApplicationController
       user = User.login(name, pass)
       if user
         session[:user_id] = user.id
-        # TODO: people may login from everywhere. let him go back
-        redirect_to(flash[:from] || {
+        # people may login from everywhere. let him go back
+        redirect_to(params[:from] || {
           :controller => :admin,
           :action     => :index
         })
@@ -23,11 +23,14 @@ class UserController < ApplicationController
     flash[:notice] = 'login failed, please check your name & pass.'
     redirect_to :action => :login
   end
+
   def logout
     session[:user_id] = nil
     flash[:notice] = "you've logout successfully" 
     redirect_to :action => :login
   end
+
   def reg
   end
+
 end

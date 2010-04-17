@@ -19,6 +19,7 @@
                 <p>for youth we are</p>
             </div>
             <% form_for :user do |f|  %>
+                <%= hidden_field_tag :from, flash[:from] %>
                 <table>
                     <tr>
                         <th>名字：</th>
