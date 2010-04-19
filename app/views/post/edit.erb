@@ -59,7 +59,10 @@
         <h2>发布</h2> 
         <div class="content">
           <p>状态：<%=@post.state%></p>
-          <p>操作：<button>保存</button><button>发布</button></p>
+          <p>操作：
+              <button>保存</button>
+              <%=link_to '发布', :action=>:publish, :id=>@post.id%>
+          </p>
         </div>
       </div>
       <div class="blc">

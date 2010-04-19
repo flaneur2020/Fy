@@ -25,9 +25,9 @@ class PostController < ApplicationController
   
   # add posts to draft
   def add
+    @post = Post.new(params[:post])
     if request.post?
       # blah~
-      @post = Post.new(params[:post])
       @post.user = current_user
       @post.category = Category.find_by_name(params[:category])
       if @post.save
@@ -51,6 +51,17 @@ class PostController < ApplicationController
       else 
         flash[:errors] = @post.errors
       end
+    end
+  rescue ActiveRecord::RecordNotFound => err
+    redirect_to_404
+  end
+
+  def publish
+    @post = Post.find(params[:id])
+    @post.state = 'published'
+    if @post.save
+      flash[:notice] = "the post '#{@post.title}' have been published"
+      redirect_to params.merge(:action => :edit)
     end
   rescue ActiveRecord::RecordNotFound => err
     redirect_to_404
