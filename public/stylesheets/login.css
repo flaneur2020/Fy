@@ -5,6 +5,9 @@
     margin-top: 100px;
     background: #fff;
     padding: 20px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
 #main span.alert {
@@ -22,7 +25,7 @@
 }
 
 #main h1 {
-    font: normal 35px arial;
+    font: normal 45px arial;
     color: #aaa;
 }
 

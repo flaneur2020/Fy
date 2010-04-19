@@ -27,8 +27,9 @@
   <% end -%>
 
   <% form_for :post, :action=>:add, :html=>{:id=>'post_form'} do |f| %>
-    <div id="left">
+    <%=hidden_field :post, :state, :value=>'draft' %>
 
+    <div id="left">
       <div class="blc-raw">
         <label>标题</label>
         <p>
@@ -45,17 +46,15 @@
           <p>it's a blc</p>
         </div>
       </div>
-
     </div>
-    <div id="right">
 
+    <div id="right">
       <div class="blc">
         <h2>发布</h2> 
         <div class="content">
           <p>状态：未保存</p>
           <p>操作：
             <button>保存</button>
-            <a href="">发布</a>
           </p>
         </div>
       </div>

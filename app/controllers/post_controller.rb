@@ -10,7 +10,7 @@ class PostController < ApplicationController
     # filters
     cond = {} 
     cond[:category_id] = Category.find_by_name(params[:category]).id  if params[:category]
-    cond[:user_id]     = User.    find_by_name(params[:user]).id  if params[:user]
+    cond[:user_id]     = User.    find_by_name(params[:user]).id      if params[:user]
     # by default, do not display the removed
     cond[:state] = ['published', 'draft']
     cond[:state] = params[:state] if params[:state]
@@ -22,7 +22,7 @@ class PostController < ApplicationController
                            :order=>'id desc', 
                            :per_page=>15)
   end
-  
+
   # add posts to draft
   def add
     @post = Post.new(params[:post])
