@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_404
     redirect_to :controller => :admin,
-                :action     => '404'
+                :action     => 'orz_404'
 
   end
 end

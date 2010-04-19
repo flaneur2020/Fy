@@ -5,7 +5,6 @@ class AdminController < ApplicationController
   end
 
   def orz_404
-    
   end
 
 end

@@ -159,7 +159,8 @@
 }
 #main #list-main th {
     text-align: center;
-    padding: 5px 0 5px 5px;
+    border: none;
+    padding: 7px 0 7px 5px;
     font: normal 14px arial;
     color: #666;
 }
@@ -189,7 +190,7 @@
     margin-bottom: 0px;
     padding: 0 10px 0 0;
 }
-#main #list-main tbody tr:hover {
+#main #list-main tbody tr:hover th {
     background: #D7E8F5;
 }
 #main #list-main tbody tr:hover .act {
@@ -202,6 +203,6 @@
 #main #list-main .author { width: 100px; }
 #main #list-main .date { width: 90px; }
 
-#main #list-main tr.published   { background: #E6FFDF; }
-#main #list-main tr.draft       { background: #FFFCDF; }
-#main #list-main tr.removed     { background: #FAFAFB; }
+#main #list-main tr.published th { background: #E6FFDF; border-bottom: 1px solid #99FF80; }
+#main #list-main tr.draft     th { background: #FFFCDF; border-bottom: 1px solid #FFF280; }
+#main #list-main tr.removed   th { background: #FAFAFB; border-bottom: 1px solid #DFDFDF;}

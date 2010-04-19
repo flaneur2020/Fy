@@ -29,7 +29,7 @@ class PostController < ApplicationController
       # blah~
       @post = Post.new(params[:post])
       @post.user = current_user
-      @post.category = Category.find(params[:category_id])
+      @post.category = Category.find_by_name(params[:category])
       if @post.save
         flash[:notice] = 'posted successfully!'
         redirect_to :action => :edit,
@@ -43,6 +43,7 @@ class PostController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     if request.post?
+      @post.category = Category.find_by_name(params[:category])
       if @post.update_attributes(params[:post])
         flash[:notice] = 'posted successfully!'
         redirect_to :action => :edit,
@@ -62,6 +63,8 @@ class PostController < ApplicationController
       flash[:notice] = "the post '#{@post.title}' have been removed into recycle bin"
       redirect_to params.merge(:action => :list)
     end
+  rescue ActiveRecord::RecordNotFound => err
+    redirect_to_404
   end
 
   #TODO: rm_many
