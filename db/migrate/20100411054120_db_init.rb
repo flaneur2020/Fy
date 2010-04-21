@@ -18,6 +18,7 @@ class DbInit < ActiveRecord::Migration
 
     create_table :categories do |t|
       t.string    :name
+      t.integer   :parent_id
     end
 
     # init users
@@ -28,22 +29,36 @@ class DbInit < ActiveRecord::Migration
       :name=>'ssword',
       :pass=>'aaaaaa')
 
-    default=Category.create (
-      :name=>'default'
+    root=Category.create(
+      :name=>'root'
     )
-    Category.create(
-      :name=>'blah~'
+    default=Category.create (
+      :name=>'default',
+      :parent=>root
+    )
+    blah=Category.create(
+      :name=>'blah~',
+      :parent=>root
+    )
+    blah2=Category.create(
+      :name=>'blah2',
+      :parent=>default
+    )
+    blah3=Category.create(
+      :name=>'blah3',
+      :parent=>default
     )
 
     # init Posts
     status=['draft', 'removed', 'published']
+    categories=[root, default, blah]
     100.times do |i|
       Post.create do |p|
         p.title="test p #{i}"
         p.content='blah~'
         p.user=ssword
-        p.category = default
-        p.state = status[i%3]
+        p.category = categories[rand(3)]
+        p.state = status[rand(3)]
       end
     end
   end

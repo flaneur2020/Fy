@@ -78,6 +78,9 @@ Rails::Initializer.run do |config|
     :lib => 'will_paginate', 
     :source => 'http://gems.github.com' 
 
+  config.gem 'acts_as_tree', 
+    :lib => 'acts_as_tree'
+
 end
 
 # for format of datetime 

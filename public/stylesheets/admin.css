@@ -190,12 +190,20 @@
     margin-bottom: 0px;
     padding: 0 10px 0 0;
 }
+#main #list-main tbody .act2 {
+    display: none;
+    float: right;
+    margin-bottom: 0px;
+    padding: 0 10px 0 0;
+}
+
 #main #list-main tbody tr:hover th {
     background: #D7E8F5;
 }
-#main #list-main tbody tr:hover .act {
-    display: inline;
-}
+#main #list-main tbody tr.draft:hover     .act { display: inline; }
+#main #list-main tbody tr.published:hover .act { display: inline; }
+
+#main #list-main tbody tr.removed:hover .act2 { display: inline; }
 
 #main #list-main .select { width: 20px; }
 #main #list-main tbody .title { text-align: left; }

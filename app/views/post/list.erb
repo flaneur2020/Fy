@@ -50,9 +50,15 @@
                 <th class="title">
                   <%=link_to post.title, :action=>:view, :id=>post.id%>
                   <span class="act">
-                    <%=link_to '编辑', {:action=>:edit, :id=>post.id} %> 
-                    <%=link_to '删除', {:action=>:rm,   :id=>post.id}, {:confirm=>"真的要删除文章'"+post.title+"'嘛？", :style=>'color:red'} %>
-                    <%=link_to '查看', {:action=>:view, :id=>post.id} %> 
+                    <%=link_to '查看', {:action=>:preview, :id=>post.id} %> 
+                    <%=link_to '编辑', {:action=>:edit,    :id=>post.id} %> 
+                    <%=link_to '删除', {:action=>:rm,      :id=>post.id}, {:confirm=>"真的要删除文章'"+post.title+"'嘛？", :style=>'color:red'} %>
+                  </span>
+                  <span class="act2">
+                    <%=link_to '查看',     {:action=>:preview, :id=>post.id} %> 
+                    <%=link_to '编辑',     {:action=>:edit,    :id=>post.id} %> 
+                    <%=link_to '还原',     {:action=>:recover, :id=>post.id} %> 
+                    <%=link_to '彻底删除', {:action=>:del,     :id=>post.id}, {:confirm=>"该操作不可恢复，确定你要删除文章'"+post.title+"'么？", :style=>'color:red'} %>
                   </span>
                 </th>
                 <th class="category">

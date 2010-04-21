@@ -5,6 +5,9 @@ class PostController < ApplicationController
     redirect_to :action => :list
   end
 
+  def preview
+  end
+
   # TODO: added rescue for find
   def list
     # filters
@@ -24,6 +27,7 @@ class PostController < ApplicationController
   end
 
   # add posts to draft
+  # check the tag of publishment
   def add
     @post = Post.new(params[:post])
     if request.post?
@@ -67,6 +71,7 @@ class PostController < ApplicationController
     redirect_to_404
   end
 
+  # just tag post as removed
   def rm
     @post = Post.find(params[:id])
     @post.state = 'removed'
@@ -81,5 +86,9 @@ class PostController < ApplicationController
   #TODO: rm_many
   def rm_many
     
+  end
+
+  # Delete 
+  def del
   end
 end
