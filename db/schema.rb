@@ -12,8 +12,10 @@
 ActiveRecord::Schema.define(:version => 20100411054120) do
 
   create_table "categories", :force => true do |t|
-    t.string  "name"
-    t.integer "parent_id"
+    t.string   "name"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|

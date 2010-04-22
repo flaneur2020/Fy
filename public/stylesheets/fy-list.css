@@ -1,0 +1,99 @@
+/* for list */
+#main .list-nav {
+    display: inline;
+    width: 960px;
+    margin: 0 0 0 0;
+    padding: 0;
+    line-height: 20px;
+}
+
+#main .list-nav .pagi {
+    float: right;
+    font: normal 15px arial;
+    overflow: hidden;
+    line-height: 20px;
+}
+
+#main .list-nav span.pagi a { padding: 0 5px 0 5px; margin: 0 0 0 -5px; }
+#main .list-nav span.pagi span.current { padding: 0 5px 0 5px; margin: 0 0 0 -5px; background: #FFF280; }
+
+#main .list-nav span.pagi a:hover {
+    background: #B1D3EC;
+    color: #fff;
+}
+
+#main .list-nav .pagi span.current { 
+}
+
+#main .list-nav .filter {
+    text-align: left;
+}
+
+#main #list-main {
+    margin: 10px 0 1px 20px;
+    width: 96%;
+}
+#main #list-main table {
+    width: 100%;
+    border: 1px solid #DFE8EF;
+}
+#main #list-main th {
+    text-align: center;
+    border: none;
+    padding: 7px 0 7px 5px;
+    font: normal 14px arial;
+    color: #666;
+}
+
+#main #list-main thead th {
+    text-align: center;
+    font: normal 14px arial;
+    background: #DFE8EF;
+    overflow: hidden;
+    color: #000;
+}
+
+#main #list-main tfoot th {
+    text-align: center;
+    font: normal 14px arial;
+    background: #DFE8EF;
+    overflow: hidden;
+    color: #000;
+}
+
+#main #list-main tbody {
+    background: #FAFCFE;
+}
+
+#main #list-main tbody .act {
+    display: none;
+    float: right;
+    margin-bottom: 0px;
+    padding: 0 10px 0 0;
+}
+
+#main #list-main tbody .act2 {
+    display: none;
+    float: right;
+    margin-bottom: 0px;
+    padding: 0 10px 0 0;
+}
+
+#main #list-main tbody tr:hover th {
+    background: #D7E8F5;
+}
+#main #list-main tbody tr.draft:hover     .act { display: inline; }
+#main #list-main tbody tr.published:hover .act { display: inline; }
+
+#main #list-main tbody tr.removed:hover .act2 { display: inline; }
+
+#main #list-main tbody .first { text-align: left; }
+#main #list-main th.select { width: 20px; }
+#main #list-main th.category { width: 100px; }
+#main #list-main th.author { width: 100px; }
+#main #list-main th.date { width: 90px; }
+#main #list-main th.count { width: 60px; }
+
+#main #list-main tr.published th { background: #E6FFDF; border-bottom: 1px solid #99FF80; }
+#main #list-main tr.draft     th { background: #FFFCDF; border-bottom: 1px solid #FFF280; }
+#main #list-main tr.removed   th { background: #FAFAFB; border-bottom: 1px solid #DFDFDF;}

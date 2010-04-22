@@ -23,7 +23,7 @@ class PostController < ApplicationController
                            :page=>page,
                            :conditions=>cond, 
                            :order=>'id desc', 
-                           :per_page=>15)
+                           :per_page=>20)
   end
 
   # add posts to draft
@@ -83,12 +83,14 @@ class PostController < ApplicationController
     redirect_to_404
   end
 
-  #TODO: rm_many
-  def rm_many
-    
-  end
-
   # Delete 
   def del
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "the post '#{@post.title}' have been deleted"
+      redirect_to :action => :list, :state=>:removed
+    end
+  rescue ActiveRecord::RecordNotFound => err
+    redirect_to_404
   end
 end

@@ -10,88 +10,94 @@
   }
 %>
 
-    <div id="main">
-      <h1><%=title%></h1>
-      
-      <% if flash[:notice] %>
-        <span class="alert"><%=flash[:notice]%></span>
-      <% end -%>
-      <% (flash[:errors] || []).each do |err| %>
-        <span class="alert error"><%=err%></span>
-      <% end -%>
+<style>
+@import url(/stylesheets/fy-list.css);
+</style>
 
-      <div id="list-main">
-        <span class="list-nav">
-          <span class="filter">
-            <select> <option value="default">全部目录</option> </select>
-            <select> <option value="default">全部日期</option> </select>
-            <button>过滤</button>
-          </span>
-          <span class="pagi"> <%= will_paginate @posts %> </span>
-        </span>
-        <table cellspacing="0"> 
-          <thead>
-            <tr> 
-              <th class="select"> 
-                <input type="checkbox"></input>
-              </th>
-              <th class="title">标题</th>    
-              <th class="category">目录</th>    
-              <th class="author">作者</th>    
-              <th class="date">日期</th>    
-            </tr>
-          </thead>
-          <tbody>
-            <% @posts.each do |post| %>
-              <tr valign="top" class="<%=post.state%>">
-                <th>
-                  <input type="checkbox"></input>
-                </th>
-                <th class="title">
-                  <%=link_to post.title, :action=>:view, :id=>post.id%>
-                  <span class="act">
-                    <%=link_to '查看', {:action=>:preview, :id=>post.id} %> 
-                    <%=link_to '编辑', {:action=>:edit,    :id=>post.id} %> 
-                    <%=link_to '删除', {:action=>:rm,      :id=>post.id}, {:confirm=>"真的要删除文章'"+post.title+"'嘛？", :style=>'color:red'} %>
-                  </span>
-                  <span class="act2">
-                    <%=link_to '查看',     {:action=>:preview, :id=>post.id} %> 
-                    <%=link_to '编辑',     {:action=>:edit,    :id=>post.id} %> 
-                    <%=link_to '还原',     {:action=>:recover, :id=>post.id} %> 
-                    <%=link_to '彻底删除', {:action=>:del,     :id=>post.id}, {:confirm=>"该操作不可恢复，确定你要删除文章'"+post.title+"'么？", :style=>'color:red'} %>
-                  </span>
-                </th>
-                <th class="category">
-                  <%=link_to post.category.name, params.merge(:category=>post.category.name) rescue '...'%>
-                </th>
-                <th class="user">
-                  <%=link_to post.user.name, params.merge(:user=>post.user.name)%>
-                </th>
-                <th class="date"><%=post.updated_at%></th>
-              </tr>
-            <% end %>
-          </tbody>
-          <tfoot>
-            <tr> 
-              <th id="select">
-                <input type="checkbox"></input>
-              </th>
-              <th class="title">标题</th>    
-              <th class="category">目录</th>    
-              <th class="author">作者</th>    
-              <th class="date">日期</th>    
-            </tr>
-          </tfoot>
-        </table>
+<div id="main">
+  <h1><%=title%></h1>
 
-        <span class="list-nav">
-          <span class="filter">
-            <select> <option value="default">批量操作</option> </select>
-            <button>应用</button>
-          </span>
-          <span class="pagi"> <%= will_paginate @posts%> </span>
-        </span>
-      </div>
-    </div>
+  <% if flash[:notice] %>
+    <span class="alert"><%=flash[:notice]%></span>
+  <% end -%>
+  <% (flash[:errors] || []).each do |err| %>
+    <span class="alert error"><%=err%></span>
+  <% end -%>
+
+  <div id="list-main">
+
+    <span class="list-nav">
+      <span class="filter">
+        <select> <option value="default">全部目录</option> </select>
+        <select> <option value="default">全部日期</option> </select>
+        <button>过滤</button>
+      </span>
+      <span class="pagi"> <%= will_paginate @posts %> </span>
+    </span>
+
+    <table cellspacing="0"> 
+      <thead>
+        <tr> 
+          <th class="select"> 
+            <input type="checkbox"></input>
+          </th>
+          <th class="title">标题</th>    
+          <th class="category">目录</th>    
+          <th class="author">作者</th>    
+          <th class="date">日期</th>    
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr valign="top" class="<%=post.state%>">
+            <th>
+              <input type="checkbox"></input>
+            </th>
+            <th class="title first">
+              <%=link_to post.title, :action=>:view, :id=>post.id%>
+              <span class="act">
+                <%=link_to '查看', {:action=>:preview, :id=>post.id} %> 
+                <%=link_to '编辑', {:action=>:edit,    :id=>post.id} %> 
+                <%=link_to '删除', {:action=>:rm,      :id=>post.id}, {:confirm=>"真的要删除文章'"+post.title+"'嘛？", :style=>'color:red'} %>
+              </span>
+              <span class="act2">
+                <%=link_to '查看',     {:action=>:preview, :id=>post.id} %> 
+                <%=link_to '编辑',     {:action=>:edit, :id=>post.id} %> 
+                <%=link_to '还原',     {:action=>:rec,  :id=>post.id} %> 
+                <%=link_to '彻底删除', {:action=>:del,  :id=>post.id}, {:confirm=>"该操作不可恢复，确定你要删除文章'"+post.title+"'么？", :style=>'color:red'} %>
+              </span>
+            </th>
+            <th class="category">
+              <%=link_to post.category.name, params.merge(:category=>post.category.name) rescue '...'%>
+            </th>
+            <th class="user">
+              <%=link_to post.user.name, params.merge(:user=>post.user.name)%>
+            </th>
+            <th class="date"><%=post.updated_at%></th>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr> 
+          <th id="select">
+            <input type="checkbox"></input>
+          </th>
+          <th class="title">标题</th>    
+          <th class="category">目录</th>    
+          <th class="author">作者</th>    
+          <th class="date">日期</th>    
+        </tr>
+      </tfoot>
+    </table>
+
+    <span class="list-nav">
+      <span class="filter">
+        <select> <option value="default">批量操作</option> </select>
+        <button>应用</button>
+      </span>
+      <span class="pagi"> <%= will_paginate @posts%> </span>
+    </span>
+  </div>
+</div>
 
 <%= render :partial=>'share/foot'%>

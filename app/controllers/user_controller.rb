@@ -10,6 +10,8 @@ class UserController < ApplicationController
       if user
         session[:user_id] = user.id
         # people may login from everywhere. let him go back
+        puts '~~~~~~~~'
+        puts params[:from]
         redirect_to(params[:from] || {
           :controller => :admin,
           :action     => :index

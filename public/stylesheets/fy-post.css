@@ -1,0 +1,29 @@
+#post_form input[type="text"] {
+    width: 100%;
+    font: normal 18px arial;
+    height: 30px;
+    border: 1px solid #ccc;
+    padding: 1px;
+}
+#post_form input[type="text"]:focus {
+    border: 1px solid #6CAAD9;
+    background: #FFFFDF;
+}
+
+#post_form input[type="password"] {
+    width: 100%;
+    font: normal 18px arial;
+    height: 30px;
+    border: 1px solid #ccc;
+    padding: 1px;
+}
+#post_form input[type="password"]:focus {
+    border: 1px solid #6CAAD9;
+    background: #FFFFDF;
+}
+
+#post_form label {
+    font: normal 21px arial;
+    margin: 10px 0 0 -1px;
+}
+

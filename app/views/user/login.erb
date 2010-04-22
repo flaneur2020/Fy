@@ -1,49 +1,49 @@
 <html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-        <style>
-            @import url(/stylesheets/common.css);
-            @import url(/stylesheets/login.css);
-        </style>
+    <style>
+      @import url(/stylesheets/common.css);
+      @import url(/stylesheets/fy-mono.css);
+    </style>
 
-        <title>Login - Ycms</title>
-    </head>
-    <body>
-        <div id="main">
-            <% if flash[:notice] %>
-              <span class="alert"><%=flash[:notice]%></span>
-            <% end -%>
-            <div id="about">
-                <h1>Fy</h1>
-                <p>for youth we are</p>
-            </div>
-            <% form_for :user do |f|  %>
-                <%= hidden_field_tag :from, flash[:from] %>
-                <table>
-                    <tr>
-                        <th>名字：</th>
-                        <th>
-                            <%= f.text_field :name %>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>密码：</th>
-                        <th>
-                            <%= f.password_field :pass %>
-                        </th>
-                    </tr>
-                    <tr>    
-                        <th></th>
-                        <th>
-                            注册或者<button>登录</button>
-                        </th>
-                    </tr>
-                </table>
-                
-              <% end %>
+    <title>Login - Ycms</title>
+  </head>
+  <body>
+    <div id="main">
+      <% if flash[:notice] %>
+        <span class="alert"><%=flash[:notice]%></span>
+      <% end -%>
+      <div id="about">
+        <h1>Fy</h1>
+        <p>for youth we are</p>
+      </div>
+      <% form_for :user do |f|  %>
+        <%= hidden_field_tag :from, (flash[:from] or url_for :controller=>:admin)%>
+        <table>
+          <tr>
+            <th>名字：</th>
+            <th>
+              <%= f.text_field :name %>
+            </th>
+          </tr>
+          <tr>
+            <th>密码：</th>
+            <th>
+              <%= f.password_field :pass %>
+            </th>
+          </tr>
+          <tr>    
+            <th></th>
+            <th>
+              注册或者<button>登录</button>
+            </th>
+          </tr>
+        </table>
 
-        </div>
-    </body>
+      <% end %>
+
+    </div>
+  </body>
 </html>
 

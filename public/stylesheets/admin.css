@@ -55,7 +55,7 @@
 #foot {
     margin: auto;
     padding: 20px 0 10px 0;
-    color: #7F7F80;
+    color: #eee;
     width: 1000px;
 }
 
@@ -64,7 +64,7 @@
 ***********************************/
 
 #main {
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 35px 20px;
     margin: auto;
     width: 1000px;
     background: #FDFDFD;
@@ -73,7 +73,7 @@
 
 #main h1 {
     font: normal 40px arial;
-    margin: 0 0 3px 0;
+    margin: 0 0 3px -5px;
 }
 
 #main .alert{
@@ -122,95 +122,3 @@
     margin: 10px;
 }
 
-
-/* for list */
-#main .list-nav {
-    display: block;
-    width: 960px;
-    margin: 0 0 0 0;
-}
-#main .list-nav .pagi {
-    float: right;
-    font: normal 13px arial;
-    line-height: 20px;
-    overflow: hidden;
-}
-#main .list-nav .pagi a,span {
-    padding: 0 5px 0 5px;
-    margin-left: -10px;
-}
-#main .list-nav .pagi a:hover {
-    background: #B1D3EC;
-    color: #fff;
-}
-#main .list-nav .pagi span.current { 
-}
-
-#main .list-nav .filter {
-    text-align: left;
-}
-
-#main #list-main {
-    margin: 10px 0 1px 20px;
-    width: 100%;
-}
-#main #list-main table {
-    width: 960px;
-}
-#main #list-main th {
-    text-align: center;
-    border: none;
-    padding: 7px 0 7px 5px;
-    font: normal 14px arial;
-    color: #666;
-}
-
-#main #list-main thead th {
-    text-align: center;
-    font: normal 14px arial;
-    background: #DFE8EF;
-    overflow: hidden;
-    color: #000;
-}
-
-#main #list-main tfoot th {
-    text-align: center;
-    font: normal 14px arial;
-    background: #DFE8EF;
-    overflow: hidden;
-    color: #000;
-}
-
-#main #list-main tbody {
-    background: #FAFCFE;
-}
-#main #list-main tbody .act {
-    display: none;
-    float: right;
-    margin-bottom: 0px;
-    padding: 0 10px 0 0;
-}
-#main #list-main tbody .act2 {
-    display: none;
-    float: right;
-    margin-bottom: 0px;
-    padding: 0 10px 0 0;
-}
-
-#main #list-main tbody tr:hover th {
-    background: #D7E8F5;
-}
-#main #list-main tbody tr.draft:hover     .act { display: inline; }
-#main #list-main tbody tr.published:hover .act { display: inline; }
-
-#main #list-main tbody tr.removed:hover .act2 { display: inline; }
-
-#main #list-main .select { width: 20px; }
-#main #list-main tbody .title { text-align: left; }
-#main #list-main .category { width: 100px; }
-#main #list-main .author { width: 100px; }
-#main #list-main .date { width: 90px; }
-
-#main #list-main tr.published th { background: #E6FFDF; border-bottom: 1px solid #99FF80; }
-#main #list-main tr.draft     th { background: #FFFCDF; border-bottom: 1px solid #FFF280; }
-#main #list-main tr.removed   th { background: #FAFAFB; border-bottom: 1px solid #DFDFDF;}

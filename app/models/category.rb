@@ -15,12 +15,14 @@ class Category < ActiveRecord::Base
       return r
     else
       r = []
-      # find all roots
-      roots=Category.find_all_by_parent_id(nil)
-      roots.each do |c|
+      Category.find_roots.each do |c|
         Category.to_options(c, 0, r)
       end
       return r
     end
+  end
+
+  def Category.find_roots
+    Category.find_all_by_parent_id(nil)
   end
 end
