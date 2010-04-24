@@ -56,8 +56,6 @@ class PostController < ApplicationController
         flash[:errors] = @post.errors
       end
     end
-  rescue ActiveRecord::RecordNotFound => err
-    redirect_to_404
   end
 
   def publish
@@ -67,8 +65,6 @@ class PostController < ApplicationController
       flash[:notice] = "the post '#{@post.title}' have been published"
       redirect_to params.merge(:action => :edit)
     end
-  rescue ActiveRecord::RecordNotFound => err
-    redirect_to_404
   end
 
   # just tag post as removed
@@ -79,8 +75,6 @@ class PostController < ApplicationController
       flash[:notice] = "the post '#{@post.title}' have been removed into recycle bin"
       redirect_to params.merge(:action => :list)
     end
-  rescue ActiveRecord::RecordNotFound => err
-    redirect_to_404
   end
 
   # Delete 
@@ -90,7 +84,5 @@ class PostController < ApplicationController
       flash[:notice] = "the post '#{@post.title}' have been deleted"
       redirect_to :action => :list, :state=>:removed
     end
-  rescue ActiveRecord::RecordNotFound => err
-    redirect_to_404
   end
 end
