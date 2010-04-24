@@ -26,7 +26,17 @@ class PostController < ApplicationController
                            :per_page=>20)
   end
 
+  # add posts to draft
+  # check the tag of publishment
+  def add
+    @post = Post.new(params[:post])
+    render :action => :edit
+  end
 
+  def edit
+    @post = Post.find(params[:id])
+    render :action => :edit
+  end
 
   # add, eidt => save 
   def save
@@ -51,24 +61,13 @@ class PostController < ApplicationController
     end
   end
 
-  # add posts to draft
-  # check the tag of publishment
-  def add
-    @post = Post.new(params[:post])
-    render :action => :edit
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-    render :action => :edit
-  end
-
-  # just tag post as publish
+  # just tag post as published, just a tag
   def publish
     @post = Post.find(params[:id])
     @post.state = 'published'
     if @post.save
       flash[:notice] = "the post '#{@post.title}' have been published"
+      # merge :id into params
       redirect_to params.merge(:action => :edit)
     end
   end
@@ -83,7 +82,16 @@ class PostController < ApplicationController
     end
   end
 
-  # do REAL delete 
+  def recover
+    @post = Post.find(params[:id])
+    @post.state = 'draft'
+    if @post.save
+      flash[:notice] = "the post '#{@post.title}' been recovered as a draft. "
+      redirect_to params.merge(:action => :list)
+    end
+  end
+
+  # do REAL deletion
   def del
     @post = Post.find(params[:id])
     if @post.destroy
