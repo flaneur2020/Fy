@@ -26,6 +26,26 @@ class PostController < ApplicationController
                            :per_page=>20)
   end
 
+  def save
+    if params[:id]
+      @post = Post.find(params[:id])
+    else
+      @post = Post.new
+    end
+    if request.post?
+      @post.user = current_user
+      @post.category = Category.find_by_name(params[:category])
+      @post.update(params[:post])
+      if @post.save
+        flash[:notice] = 'saved successfully'
+        redirect_to :action => :edit,
+                    :id     => @post.id
+      else
+        flash[:errors] = @post.errors
+      end
+    end
+  end
+
   # add posts to draft
   # check the tag of publishment
   def add
