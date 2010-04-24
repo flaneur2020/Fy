@@ -16,4 +16,12 @@ class Post < ActiveRecord::Base
     self.state = 'published'
   end
 
+  def state=(str)
+    if ['draft', 'published', 'removed'].include?(str)
+      super(str)
+    else
+      raise 'state of a Post is just "draft", "published" and "removed"'
+    end
+  end
+
 end

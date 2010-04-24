@@ -1,62 +1,68 @@
 <%
-  title  ||= '首页'
-  cur    ||= :home
-  tabs = {
-    :home => {
-      :index    => ['首页',   url_for(:controller => :admin)],
-      :sub_tabs => []
-    },
-    :post => {
-      :index    => ['文章',   url_for(:controller => :post)],
-      :sub_tabs => [
-        ['新文章', url_for(:action => :add)],
-        ['管理',   url_for(:action => :list)],
-        ['已发布', url_for(:action => :list, :state => :published)],
-        ['草稿',   url_for(:action => :list, :state => :draft)],
-        ['回收站', url_for(:action => :list, :state => :removed)]
-      ]
-    },
-    :category => {
-      :index    => ['目录',   url_for(:controller => :category)],
-      :sub_tabs => [
-        ['新目录',  url_for(:action => :add)],
-        ['管理',    url_for(:action => :list)],
-      ]
+    title  ||= '首页'
+    cur    ||= :home
+    styles ||= []
+    tabs = {
+        :home => {
+            :index    => ['首页',   url_for(:controller => :admin)],
+            :sub_tabs => []
+        },
+        :post => {
+            :index    => ['文章',   url_for(:controller => :post)],
+            :sub_tabs => [
+                ['新文章', url_for(:action => :add)],
+                ['管理',   url_for(:action => :list)],
+                ['已发布', url_for(:action => :list, :state => :published)],
+                ['草稿',   url_for(:action => :list, :state => :draft)],
+                ['回收站', url_for(:action => :list, :state => :removed)]
+            ]
+        },
+        :category => {
+            :index    => ['目录',   url_for(:controller => :category)],
+            :sub_tabs => [
+                ['新目录',  url_for(:action => :add)],
+                ['管理',    url_for(:action => :list)],
+            ]
+        }
     }
-  }
-  current_tab = tabs[cur]
-  current_tab[:cur]='class="cur"'
-  sub_tabs = current_tab[:sub_tabs]
+    current_tab = tabs[cur]
+    current_tab[:cur]='class="cur"'
+    sub_tabs = current_tab[:sub_tabs]
 %>
+
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-    <style>
-      @import url(/stylesheets/common.css);
-      @import url(/stylesheets/admin.css);
-    </style>
-    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+        <style>
+            @import url(/stylesheets/common.css);
+            @import url(/stylesheets/admin.css);
 
-    <title><%= title %> - Fy</title>
-  </head>
-  <body>
-    <div id="head">
-      <h1 id="name">欢迎，
-        <%= link_to @current_user.name %> |
-        <%= link_to '注销', :controller=>:user, :action=>:logout%>
-      </h1>
-      <ul class="nav">
-        <% 
-          tabs.each do |k, v|
-            name, url = v[:index]
-            %><li><a <%=v[:cur]%> href="<%=url%>"><%=name%></a></li><%
-          end 
-        %>
-      </ul>
-      <ul class="nav sub-nav">
-        <% for name, url in sub_tabs %>
-          <li><a href="<%=url%>"><%=name%></a></li>
-        <% end %>
-      </ul>
-    </div>
+            <% for url in styles %>
+                @import url(<%=url%>);
+            <% end -%>
+        </style>
+        <script type="text/javascript" src="/javascripts/jquery.js"></script>
+
+        <title><%= title %> - Fy</title>
+    </head>
+    <body>
+        <div id="head">
+            <h1 id="name">欢迎，
+                <%= link_to @current_user.name %> |
+                <%= link_to '注销', :controller=>:user, :action=>:logout%>
+            </h1>
+            <ul class="nav">
+                <% 
+                    tabs.each do |k, v|
+                        name, url = v[:index]
+                        %><li><a <%=v[:cur]%> href="<%=url%>"><%=name%></a></li><%
+                    end 
+                -%>
+            </ul>
+            <ul class="nav sub-nav">
+                <% for name, url in sub_tabs %>
+                    <li><a href="<%=url%>"><%=name%></a></li>
+                <% end -%>
+            </ul>
+        </div>

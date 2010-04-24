@@ -26,6 +26,9 @@ class PostController < ApplicationController
                            :per_page=>20)
   end
 
+
+
+  # add, eidt => save 
   def save
     if params[:id]
       @post = Post.find(params[:id])
@@ -33,15 +36,17 @@ class PostController < ApplicationController
       @post = Post.new
     end
     if request.post?
+      @post.attributes = params[:post]
+      # TODO: one author, serveral eitors
       @post.user = current_user
       @post.category = Category.find_by_name(params[:category])
-      @post.update(params[:post])
       if @post.save
         flash[:notice] = 'saved successfully'
         redirect_to :action => :edit,
-                    :id     => @post.id
+          :id     => @post.id
       else
         flash[:errors] = @post.errors
+        render :action => :edit
       end
     end
   end
@@ -50,34 +55,15 @@ class PostController < ApplicationController
   # check the tag of publishment
   def add
     @post = Post.new(params[:post])
-    if request.post?
-      # blah~
-      @post.user = current_user
-      @post.category = Category.find_by_name(params[:category])
-      if @post.save
-        flash[:notice] = 'posted successfully!'
-        redirect_to :action => :edit,
-                    :id     => @post.id
-      else
-        flash[:errors] = @post.errors
-      end
-    end
+    render :action => :edit
   end
 
   def edit
     @post = Post.find(params[:id])
-    if request.post?
-      @post.category = Category.find_by_name(params[:category])
-      if @post.update_attributes(params[:post])
-        flash[:notice] = 'posted successfully!'
-        redirect_to :action => :edit,
-                    :id     => @post.id
-      else 
-        flash[:errors] = @post.errors
-      end
-    end
+    render :action => :edit
   end
 
+  # just tag post as publish
   def publish
     @post = Post.find(params[:id])
     @post.state = 'published'
@@ -97,7 +83,7 @@ class PostController < ApplicationController
     end
   end
 
-  # Delete 
+  # do REAL delete 
   def del
     @post = Post.find(params[:id])
     if @post.destroy

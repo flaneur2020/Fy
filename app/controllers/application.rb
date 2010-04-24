@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '2f8d42c468821c1b5e8edbeadc9c6450'
 
+  #TODO: exception rescue in public
+  
   protected
 
   def current_user
@@ -26,8 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_404
-    redirect_to :controller => :admin,
-                :action     => 'orz_404'
+    redirect_to '/404.html'
   end
 
 end

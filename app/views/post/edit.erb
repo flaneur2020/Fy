@@ -21,18 +21,17 @@
 <div id="main">
   <h1>撰写</h1>
 
-  <%# notice about %>
+  <!-- notice about -->
   <% if flash[:notice] %>
     <span class="alert">
-      <%=flash[:notice]%> |
-      <%=link_to '查看', :action=>:view, :id=>@post.id %>
+      <%=flash[:notice]%> | <%=link_to '查看', :action=>:view, :id=>@post.id %>
     </span>
   <% end -%>
   <% (flash[:errors] || []).each do |err| %>
     <span class="alert error"><%=err%></span>
   <% end -%>
 
-  <% form_for :post, :action=>:edit, :html=>{:id=>'post_form'} do |f| %>
+  <% form_for :post, :url => { :action=>:save }, :html => {:id=>'post_form'} do |f| %>
     <div id="left">
 
       <div class="blc-raw">
@@ -68,7 +67,7 @@
       <div class="blc">
         <h2>分类</h2> 
         <div class="content">
-          <%= select_tag :category, options_for_select(Category.to_options, @post.category.name) %>
+            <%= select_tag :category, options_for_select(Category.to_options, (@post.category.name rescue '')) %>
         </div>
       </div>
     </div>

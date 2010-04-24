@@ -6,13 +6,10 @@
 
   render :partial => "share/head", :locals => {
     :cur   => :post,
-    :title => title
+    :title => title,
+    :styles => ['/stylesheets/fy-list.css']
   }
 %>
-
-<style>
-@import url(/stylesheets/fy-list.css);
-</style>
 
 <div id="main">
   <h1><%=title%></h1>
