@@ -29,7 +29,7 @@ class PostController < ApplicationController
   # add posts to draft
   # check the tag of publishment
   def add
-    @post = Post.new(params[:post])
+    @post = Post.new
     render :action => :edit
   end
 
@@ -40,13 +40,10 @@ class PostController < ApplicationController
 
   # add, eidt => save 
   def save
-    if params[:id]
-      @post = Post.find(params[:id])
-    else
-      @post = Post.new
-    end
+    @post = Post.find_or_new(params[:id])
     if request.post?
       @post.attributes = params[:post]
+      @post.title = '(untitled)' if params[:post][:title]
       # TODO: one author, serveral eitors
       @post.user = current_user
       @post.category = Category.find_by_name(params[:category])
@@ -66,7 +63,7 @@ class PostController < ApplicationController
     @post = Post.find(params[:id])
     @post.state = 'published'
     if @post.save
-      flash[:notice] = "the post '#{@post.title}' have been published"
+      flash[:notice] = "published successfully"
       # merge :id into params
       redirect_to params.merge(:action => :edit)
     end

@@ -18,4 +18,10 @@ class Post < ActiveRecord::Base
     self.state = 'published'
   end
 
+  def Post.find_or_new(*args)
+    return Post.find(*args)
+  rescue 
+    return Post.new()
+  end
+
 end

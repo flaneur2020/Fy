@@ -32,6 +32,9 @@
   <% end -%>
 
   <% form_for :post, :url => { :action=>:save }, :html => {:id=>'post_form'} do |f| %>
+    <%= hidden_field_tag :id, @post.id %>
+    <%= hidden_field_tag 'post[state]', @post.state || 'draft' %>
+
     <div id="left">
 
       <div class="blc-raw">
@@ -60,7 +63,8 @@
           <p>状态：<%=@post.state%></p>
           <p>操作：
               <button>保存</button>
-              <%=link_to '发布', :action=>:publish, :id=>@post.id%>
+              <%=link_to '发布', :action=>:publish, :id=>@post.id if @post.id %>
+              <%=link_to '删除', {:action=>:publish, :id=>@post.id}, {:confirm=>"该操作不可恢复，确定你要删除文章'"+@post.title+"'么？", :style=>'color:red'} if @post.id %>
           </p>
         </div>
       </div>
