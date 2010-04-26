@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   # head in template
-  def fy_head(title, cur, options)
+  def fy_head(title, cur, options={})
     render :partial => "share/head", :locals => {
       :title  => title,
       :cur    => cur

@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
 
   # validations 
   validates_presence_of   :user
+  validates_presence_of   :category,
+                          :message => ' could not be blank'
   validates_presence_of   :title,
                           :message => ' can not be blank'
   validates_inclusion_of  :state,

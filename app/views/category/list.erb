@@ -9,22 +9,19 @@
 
   <div id="left" style="width: 400px; ">
 
-    <!-- TODO: put it aside -->
     <div> 
-      <% form_for :category do %>
+      <% form_for :category, :url=>{:action=>:save}, :html=>{:id=>'category_form'} do |f| %>
+        <%= hidden_field_tag :id, @category.id %>
         <p> 
-        <label>目录名</label>
-        <input type="text" />
+          <label>目录名</label><br/>
+          <%= f.text_field :name%>
         </p>
         <p>
-        <label>父级目录</label>
-        <input type="text" />
+          <label>父级目录</label><br/>
+          <%= fy_category_select_tag :parent_name, (@category.parent.name rescue '') %>
         </p>
         <p>
-        <label>简介</label>
-        <input type="text" />
-        </p>
-        <button>新目录</button>
+        <button>保存</button>
       <% end %>
     </div>
 
@@ -48,10 +45,17 @@
         <tbody>
           <% @categories.each do |category| %>
             <tr id="item-<%=category.id%>" 
-              class="item-depth-<%=category.depth%> <%="item-children-of-#{category.parent.id}" rescue 'item-root'%>" 
+              class="item item-depth-<%=category.depth%> <%="item-children-of-#{category.parent.id}" rescue 'item-root'%>" 
               valign="top">
               <th> <input type="checkbox"></input> </th>
-              <th class="name first"><%=h category.name%></th>
+              <th class="name first">
+                <%=h '. . . . '*category.depth %><%=h category.name%>
+                <span class="act">
+                  <%=link_to '添加', {:action=>:add,     :parent_id=>category.id} %> 
+                  <%=link_to '编辑', {:action=>:edit,    :id=>category.id} %> 
+                  <%=link_to '删除', {:action=>:rm,      :id=>category.id}, {:confirm=>"真的要删除目录'"+category.name+"'？", :style=>'color:red'} %>
+                </span>
+              </th>
               <th class="count"><%=category.posts.count%></th>
             </tr>
           <% end %>

@@ -4,7 +4,9 @@ class Category < ActiveRecord::Base
   has_many :posts
   
   # validations
+  validates_presence_of :name
   validates_uniqueness_of :name
+  # TODO: valid do not set parent as self
 
   # the roots' parents are nil
   # TODO: get depth when traverse
@@ -17,23 +19,28 @@ class Category < ActiveRecord::Base
       r += 1
     end
     return @depth = r
-  end
+  end 
 
-  # 
-  def Category.to_options(root=nil, d=0, r=[])
+  def Category.as_list(root=nil, r=[])
     if root
-      r << ['. . '*d + root.name, root.name]
+      r << root
       root.children.each do |c|
-        Category.to_options(c, d+1, r)
+        Category.as_list(c, r)
       end
-      return r
     else
       r = []
       Category.find_roots.each do |c|
-        Category.to_options(c, 0, r)
+        Category.as_list(c, r)
       end
-      return r
     end
+    return r
+  end
+
+  # just a helper
+  def Category.find_or_new(*args)
+    return Category.find(*args)
+  rescue
+    return Category.new
   end
 
   def Category.find_roots

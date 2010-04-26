@@ -58,7 +58,7 @@
       <div class="blc">
         <h2>分类</h2> 
         <div class="content">
-            <%= select_tag :category, options_for_select(Category.to_options, (@post.category.name rescue '')) %>
+          <%= fy_category_select_tag :category, (@post.category.name rescue '') %>
         </div>
       </div>
     </div>

@@ -6,25 +6,34 @@ class CategoryController < ApplicationController
   end
 
   def list
-    @categories = Category.to_options.map do |sname, name|
-      cat = Category.find_by_name(name)
-      cat.name = sname
-      cat
-    end
-  end
-
-  def save
+    @category = Category.new
+    @categories = Category.as_list
   end
 
   def add
-    @categories = Category.to_options.map do |sname, name|
-      cat = Category.find_by_name(name)
-      cat.name = sname
-      cat
-    end
+    @category = Category.new
+    @category.parent = Category.find(params[:parent_id]) if params[:parent_id]
+    render :action => :edit
   end
   
   def edit
+    @category = Category.find(params[:id])
+    render :action => :edit
+  end
+
+  def save
+    @category = Category.find_or_new(params[:id])
+    if request.post?
+      @category.attributes = params[:category]
+      @category.parent = Category.find_by_name(params[:parent_name])
+      if @category.save
+        flash[:notice] = 'category saved successfully'
+        redirect_to :action=>:list
+      else
+        flash[:errors] = @category.errors
+        render :action => :edit
+      end
+    end
   end
 
   def rm

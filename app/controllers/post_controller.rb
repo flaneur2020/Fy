@@ -12,8 +12,8 @@ class PostController < ApplicationController
   def list
     # filters
     cond = {} 
-    cond[:category_id] = Category.find_by_name(params[:category]).id  if params[:category]
-    cond[:user_id]     = User.    find_by_name(params[:user]).id      if params[:user]
+    cond[:category_id] = Category.find_by_name(params[:category]).id  if params[:category]  rescue ''
+    cond[:user_id]     = User.    find_by_name(params[:user]).id      if params[:user]      rescue ''
     # by default, do not display the removed
     cond[:state] = ['published', 'draft']
     cond[:state] = params[:state] if params[:state]
@@ -76,8 +76,10 @@ class PostController < ApplicationController
     @post.state = 'removed'
     if @post.save
       flash[:notice] = "the post '#{@post.title}' have been removed into recycle bin"
-      redirect_to params.merge(:action => :list)
+    else
+      flash[:notice] = "remove failed."
     end
+    redirect_to params.merge(:action => :list)
   end
 
   def recover

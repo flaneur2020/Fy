@@ -82,6 +82,7 @@
 #main #list-main tbody tr:hover th {
     background: #D7E8F5;
 }
+#main #list-main tbody tr.item:hover      .act { display: inline; }
 #main #list-main tbody tr.draft:hover     .act { display: inline; }
 #main #list-main tbody tr.published:hover .act { display: inline; }
 
