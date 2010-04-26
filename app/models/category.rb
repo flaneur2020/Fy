@@ -6,6 +6,20 @@ class Category < ActiveRecord::Base
   # validations
   validates_uniqueness_of :name
 
+  # the roots' parents are nil
+  # TODO: get depth when traverse
+  # have a cache
+  def depth
+    return @depth if @depth
+    r = 0
+    c = self
+    while c = c.parent
+      r += 1
+    end
+    return @depth = r
+  end
+
+  # 
   def Category.to_options(root=nil, d=0, r=[])
     if root
       r << ['. . '*d + root.name, root.name]
@@ -25,4 +39,5 @@ class Category < ActiveRecord::Base
   def Category.find_roots
     Category.find_all_by_parent_id(nil)
   end
+
 end

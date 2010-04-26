@@ -6,7 +6,6 @@ class CategoryController < ApplicationController
   end
 
   def list
-    page = params[:page] || 1
     @categories = Category.to_options.map do |sname, name|
       cat = Category.find_by_name(name)
       cat.name = sname
@@ -14,7 +13,15 @@ class CategoryController < ApplicationController
     end
   end
 
+  def save
+  end
+
   def add
+    @categories = Category.to_options.map do |sname, name|
+      cat = Category.find_by_name(name)
+      cat.name = sname
+      cat
+    end
   end
   
   def edit

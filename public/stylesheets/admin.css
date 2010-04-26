@@ -76,7 +76,7 @@
     margin: 0 0 3px -5px;
 }
 
-#main .alert{
+#main .notice{
     display: block;
     width: 950px;
     margin: 5px 0 5px 20px;
@@ -85,7 +85,7 @@
     background: #FFFFBF;
 }
 
-#main .alert.error{
+#main .notice.error{
     display: block;
     border: 1px solid #FF0000;
     background: #FFBFBF;

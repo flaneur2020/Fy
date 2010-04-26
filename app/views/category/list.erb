@@ -1,43 +1,38 @@
 <%= 
-  title = "目录"
-  render :partial => "share/head", :locals => {
-    :cur    => :category,
-    :title  => title
-  }
+  fy_head '目录', :category, :styles=>['/stylesheets/fy-list.css']
 %>
 
-<style>
-  @import url(/stylesheets/fy-list.css);
-</style>
-
 <div id="main">
-  <h1><%=title%></h1>
+  <h1>目录</h1>
 
-  <% if flash[:notice] %>
-    <span class="alert"><%=flash[:notice]%></span>
-  <% end -%>
-  <% (flash[:errors] || []).each do |err| %>
-    <span class="alert error"><%=err%></span>
-  <% end -%>
+  <%=fy_notice%>
 
   <div id="left" style="width: 400px; ">
-    <p> 
-      <label>目录名</label>
-      <input type="text" />
-    </p>
-    <p>
-      <label>父级目录</label>
-      <input type="text" />
-    </p>
-    <p>
-      <label>简介</label>
-      <input type="text" />
-    </p>
+
+    <!-- TODO: put it aside -->
+    <div> 
+      <% form_for :category do %>
+        <p> 
+        <label>目录名</label>
+        <input type="text" />
+        </p>
+        <p>
+        <label>父级目录</label>
+        <input type="text" />
+        </p>
+        <p>
+        <label>简介</label>
+        <input type="text" />
+        </p>
+        <button>新目录</button>
+      <% end %>
+    </div>
+
   </div>
 
   <div id="right" style="width:560px">
-    <div id="list-main">
 
+    <div id="list-main">
       <span class="list-nav">
         <span class="filter"></span>
       </span>
@@ -52,9 +47,11 @@
         </thead>
         <tbody>
           <% @categories.each do |category| %>
-            <tr valign="top">
+            <tr id="item-<%=category.id%>" 
+              class="item-depth-<%=category.depth%> <%="item-children-of-#{category.parent.id}" rescue 'item-root'%>" 
+              valign="top">
               <th> <input type="checkbox"></input> </th>
-              <th class="name first"><%=category.name%></th>
+              <th class="name first"><%=h category.name%></th>
               <th class="count"><%=category.posts.count%></th>
             </tr>
           <% end %>
@@ -68,6 +65,7 @@
         </tfoot>
       </table>
     </div>
+
   </div>
 
 </div>

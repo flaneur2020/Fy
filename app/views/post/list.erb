@@ -1,25 +1,9 @@
-<%= 
-  title = "文章"
-  title += '/' + params[:state] rescue ''
-  title += '/' + params[:category] rescue ''
-  title += '/' + params[:user] rescue ''
-
-  render :partial => "share/head", :locals => {
-    :cur   => :post,
-    :title => title,
-    :styles => ['/stylesheets/fy-list.css']
-  }
-%>
+<%= fy_head '文章', :post, :styles => ['/stylesheets/fy-list.css'] %>
 
 <div id="main">
-  <h1><%=title%></h1>
+  <h1>文章<%=fy_post_list_path%></h1>
 
-  <% if flash[:notice] %>
-    <span class="alert"><%=flash[:notice]%></span>
-  <% end -%>
-  <% (flash[:errors] || []).each do |err| %>
-    <span class="alert error"><%=err%></span>
-  <% end -%>
+  <%= fy_notice %>
 
   <div id="list-main">
 

@@ -39,13 +39,14 @@ class PostController < ApplicationController
   end
 
   # add, eidt => save 
+  # if title in form is '', make it "(untitled)"
   def save
     @post = Post.find_or_new(params[:id])
     if request.post?
       @post.attributes = params[:post]
-      @post.title = '(untitled)' if params[:post][:title]
       # TODO: one author, serveral eitors
       @post.user = current_user
+      @post.title = '(untitled)' if @post.title.strip==''
       @post.category = Category.find_by_name(params[:category])
       if @post.save
         flash[:notice] = 'saved successfully'

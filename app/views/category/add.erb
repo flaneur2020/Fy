@@ -1,1 +1,37 @@
+<%= fy_head '新目录', :category, :styles=>[] %>
+
+<div id="main">
+  <h1>新目录</h1>
+
+  <%= fy_notice %>
+
+  <div id="left" style="width: 400px; ">
+
+    <!-- TODO: put it aside -->
+    <div> 
+      <% form_for :category do %>
+        <p> 
+        <label>目录名</label>
+        <input type="text" />
+        </p>
+        <p>
+        <label>父级目录</label>
+        <input type="text" />
+        </p>
+        <p>
+        <label>简介</label>
+        <input type="text" />
+        </p>
+        <button>新目录</button>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div id="right" style="width:560px">
+  </div>
+
+</div>
+
+<% fy_foot %>
 

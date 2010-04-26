@@ -1,9 +1,4 @@
-<%= 
-  render :partial => "share/head", :locals => {
-    :cur   => :post,
-    :title => '撰写'
-  }
-%>
+<%= fy_head '撰写', :post %>
 
 <!-- about editor -->
 <link rel="stylesheet" type="text/css" href="/javascripts/vendor/tinyeditor/style.css" />
@@ -21,15 +16,7 @@
 <div id="main">
   <h1>撰写</h1>
 
-  <!-- notice about -->
-  <% if flash[:notice] %>
-    <span class="alert">
-      <%=flash[:notice]%> | <%=link_to '查看', :action=>:view, :id=>@post.id %>
-    </span>
-  <% end -%>
-  <% (flash[:errors] || []).each do |err| %>
-    <span class="alert error"><%=err%></span>
-  <% end -%>
+  <%= fy_notice %>
 
   <% form_for :post, :url => { :action=>:save }, :html => {:id=>'post_form'} do |f| %>
     <%= hidden_field_tag :id, @post.id %>
@@ -64,7 +51,7 @@
           <p>操作：
               <button>保存</button>
               <%=link_to '发布', :action=>:publish, :id=>@post.id if @post.id %>
-              <%=link_to '删除', {:action=>:publish, :id=>@post.id}, {:confirm=>"该操作不可恢复，确定你要删除文章'"+@post.title+"'么？", :style=>'color:red'} if @post.id %>
+              <%=link_to '删除', {:action=>:rm, :id=>@post.id}, {:confirm=>"你真的要删除文章'"+@post.title+"'么？", :style=>'color:red'} if @post.id %>
           </p>
         </div>
       </div>

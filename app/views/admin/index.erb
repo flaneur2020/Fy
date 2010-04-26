@@ -1,9 +1,5 @@
-<%= 
-  render :partial => "share/head", :locals => {
-    :cur   => :home,
-    :title => '首页'
-  }
-%>
+<%= fy_head '首页', :home %>
+
 <div id="main">
   <h1>首页</h1>
   <span class="alert">cheers~ xxx successfully! </span>
@@ -51,4 +47,4 @@
   </div>
 </div>
 
-<%=render :partial=>'share/foot'%>
+<%= fy_foot %>
