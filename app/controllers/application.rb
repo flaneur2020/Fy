@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     else
       flash[:from]   = request.path
       flash[:notice] = 'please login first'
-      redirect_to :controller => :user,
+      redirect_to :controller => :admin,
                   :action     => :login
     end
   end
