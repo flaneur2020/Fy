@@ -37,6 +37,7 @@ class CategoryController < ApplicationController
   end
 
   def rm
+    redirect_to :action=>:list
   end
 
 end
