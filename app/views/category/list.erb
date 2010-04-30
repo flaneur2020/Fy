@@ -13,7 +13,7 @@
       <% form_for :category, :url=>{:action=>:save}, :html=>{:id=>'category_form'} do |f| %>
         <%= hidden_field_tag :id, @category.id %>
         <p> 
-          <label>目录名</label><br/>
+          <label>新建目录名</label><br/>
           <%= f.text_field :name%>
         </p>
         <p>
