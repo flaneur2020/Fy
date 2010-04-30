@@ -7,13 +7,10 @@ class Category < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  
+  # TODO: the first category cannot be destoryed
 
   # TODO: valid do not set parent as self
 
-  # the roots' parents are nil
-  # TODO: get depth when traverse
-  # have a cache
   def depth
     self.ancestors.size
   end 

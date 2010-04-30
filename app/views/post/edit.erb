@@ -34,17 +34,35 @@
         <%= f.text_area :content %>
         </p>
       </div>
-      <div class="blc">
-        <h2>文章选项</h2> 
+
+      <div class="blc blc-upload">
+        <h2>上传</h2> 
         <div class="content">
-          <p>it's a blc</p>
+          <form>
+            <input type="file" />
+            <button>上传</button>
+          </form>
+          <ul>
+            <li>
+              <img src="test.jpg" width="50" height="50"></img>
+              <div>
+                <p>images/test.jpg</p>
+                <span>
+                  <a href="#">插入</a>
+                  <a href="#">编辑</a>
+                  <a href="#">删除</a>
+                </span>
+              </div>
+            </li>
+          </ul>
         </div>
+
       </div>
 
     </div>
     <div id="right">
 
-      <div class="blc">
+      <div class="blc blc-publish">
         <h2>发布</h2> 
         <div class="content">
           <p>状态：<%=@post.state%></p>
@@ -55,7 +73,8 @@
           </p>
         </div>
       </div>
-      <div class="blc">
+
+      <div class="blc blc-category">
         <h2>分类</h2> 
         <div class="content">
           <%= fy_category_select_tag :category, (@post.category.name rescue '') %>
