@@ -1,5 +1,5 @@
 #main {
-    width: 370px;
+    width: 360px;
     margin: auto;
     margin-top: 100px;
     background: #fff;
@@ -9,7 +9,7 @@
     border-radius: 10px;
 }
 
-#main span.alert {
+#main span.notice {
     display: block;
     width: 355px;
     margin: 5px 0 5px 5px;

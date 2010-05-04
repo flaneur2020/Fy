@@ -26,3 +26,32 @@
     font: normal 21px arial;
     margin: 10px 0 0 -1px;
 }
+
+
+.blc-upload .content form {
+}
+.blc-upload .content ul {
+    display: block;
+    overflow: auto;
+}
+.blc-upload .content li {
+    width: 100px;
+    height: 85px;
+    padding: 0 15px 10px 0;
+    float: left;
+}
+.blc-upload .content li img {
+    float: left;
+    width: 100px;
+    height: 80px;
+    margin: 0 5px 0 0;
+}
+.blc-upload .content li div {
+    text-align: center;
+}
+.blc-upload .content li div p{
+    font: normal 4px arial;
+}
+.blc-upload .content li div .act {
+    text-align: center;
+}

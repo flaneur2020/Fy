@@ -7,6 +7,12 @@ class Category < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
+  validate do |cate|
+    if cate.parent == cate
+      cate.errors.add(:category, ' can not set self as parent')
+    end
+  end
+
   # TODO: the first category cannot be destoryed
 
   # TODO: valid do not set parent as self

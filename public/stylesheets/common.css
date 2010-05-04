@@ -62,3 +62,9 @@ p {
     font: normal 14px arial;
     padding: 5px 0 5px 0;
 }
+
+hr {
+    border: none;
+    border-bottom: #eee 3px solid;
+    margin: 5px 2px 5px 2px;
+}
