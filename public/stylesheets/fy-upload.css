@@ -1,8 +1,21 @@
+body {
+  background: #fff;
+}
+#head {
+  width: 360px;
+  background: #fff;
+  margin: 0 auto;
+  padding: 10px 20px 5px 20px;
+  border-bottom: 1px solid #eee;
+  font: normal 12px arial;
+}
+
 #main {
   width: 360px;
   background: #fff;
   margin: 0 auto;
   padding: 20px 20px 20px 20px;
+  font: normal 12px arial;
 }
 
 /* in the page upload/add */
@@ -16,27 +29,27 @@
 }
 #main #list-upload li {
   display: block;
-  width: 400px;
   padding: 5px 0 5px 0;
   border-bottom: 1px solid #eee;
+  overflow: auto;
 }
 
 #main #list-upload li img {
-  width: 68px;
-  height: 68px;
+  width: 70px;
+  height: 70px;
   float: left;
 }
 
 #main #list-upload li .desc {
-  float: left;
-  width: 260px;
-  margin: 0 0 0 10px;
+  width: 280px;
+  margin: 0 0 0 75px;
 }
 
 #main #list-upload li .act {
   float: right;
+  z-index: 100;
+  float: right;
   position: relative;
-  top: 50px;
   bottom: 0px;
 }
 

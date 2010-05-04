@@ -4,13 +4,26 @@
 <link rel="stylesheet" type="text/css" href="/javascripts/vendor/tinyeditor/style.css" />
 <script type="text/javascript" src="/javascripts/vendor/tinyeditor/tinyeditor.js"></script> 
 <script type="text/javascript" src="/javascripts/editor.js"> </script>
+<!-- about lightbox-->
+<link rel="stylesheet" type="text/css" href="/javascripts/vendor/colorbox/colorbox.css" />
+<script type="text/javascript" src="/javascripts/vendor/colorbox/jquery.colorbox.js"></script> 
 <script>
   $(function(){
+      // init lightbox
+    $('.show_lightbox_upload_add').colorbox({
+      iframe: true,
+      innerWidth: 420,
+      innerHeight: '75%'
+    });
+
+    // init editor
     var editor = init_editor('post_content');
     $('#post_form').bind('submit', function(){
       editor.post();
     });
+
   });
+
 </script>
 
 <div id="main">
@@ -30,7 +43,7 @@
         <%= f.text_field :title, :class => 'title' %>
         </p>
         <label>内容</label>
-        上传图片(0) | 文件(0)
+          <a class="show_lightbox_upload_add" href="/upload/add">上传图片(0) </a>| 文件(0)
         <p>
         <%= f.text_area :content %>
         </p>
