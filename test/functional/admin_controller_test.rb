@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AdminControllerTest < ActionController::TestCase
+class DefaultControllerTest < ActionController::TestCase
   # Replace this with your real tests.
   test "login ok" do
     post(:login, :user => {

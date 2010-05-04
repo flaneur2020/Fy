@@ -7,27 +7,7 @@
 
   <%=fy_notice%>
 
-  <div id="left" style="width: 400px; ">
-
-    <div> 
-      <% form_for :category, :url=>{:action=>:save}, :html=>{:id=>'category_form'} do |f| %>
-        <%= hidden_field_tag :id, @category.id %>
-        <p> 
-          <label>新建目录名</label><br/>
-          <%= f.text_field :name%>
-        </p>
-        <p>
-          <label>父级目录</label><br/>
-          <%= fy_category_select_tag :parent_name, (@category.parent.name rescue '') %>
-        </p>
-        <p>
-        <button>保存</button>
-      <% end %>
-    </div>
-
-  </div>
-
-  <div id="right" style="width:560px">
+  <div id="left" style="width:560px">
 
     <div id="list-main">
       <span class="list-nav">
@@ -68,6 +48,26 @@
           </tr>
         </tfoot>
       </table>
+    </div>
+
+  </div>
+
+  <div id="right" style="width: 400px; ">
+
+    <div> 
+      <% form_for :category, :url=>{:action=>:save}, :html=>{:id=>'category_form'} do |f| %>
+        <%= hidden_field_tag :id, @category.id %>
+        <p> 
+          <label>新建目录名</label><br/>
+          <%= f.text_field :name%>
+        </p>
+        <p>
+          <label>父级目录</label><br/>
+          <%= fy_category_select_tag :parent_name, (@category.parent.name rescue '') %>
+        </p>
+        <p>
+        <button>保存</button>
+      <% end %>
     </div>
 
   </div>

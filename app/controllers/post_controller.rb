@@ -82,7 +82,7 @@ class PostController < ApplicationController
     redirect_to params.merge(:action => :list)
   end
 
-  def recover
+  def rec
     @post = Post.find(params[:id])
     @post.state = 'draft'
     if @post.save

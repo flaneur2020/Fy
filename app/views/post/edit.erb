@@ -24,12 +24,13 @@
 
     <div id="left">
 
-      <div class="blc-raw">
+      <div class="blc-raw blc-edit">
         <label>标题</label>
         <p>
         <%= f.text_field :title, :class => 'title' %>
         </p>
         <label>内容</label>
+        上传图片(0) | 文件(0)
         <p>
         <%= f.text_area :content %>
         </p>
@@ -39,54 +40,7 @@
         <h2>上传</h2> 
         <div class="content">
           <button>新上传</button>
-
-          <hr/>
-
-          <ul>
-            <li>
-              <img src="test.jpg"></img>
-              <div>
-                <span class="act">
-                  <a href="#">插入</a>
-                  <a href="#">编辑</a>
-                  <a href="#">删除</a>
-                </span>
-              </div>
-            </li>
-            <li>
-              <img src="test.jpg"></img>
-              <div>
-                <span class="act">
-                  <a href="#">插入</a>
-                  <a href="#">编辑</a>
-                  <a href="#">删除</a>
-                </span>
-              </div>
-            </li>
-            <li>
-              <img src="test.jpg"></img>
-              <div>
-                <span class="act">
-                  <a href="#">插入</a>
-                  <a href="#">编辑</a>
-                  <a href="#">删除</a>
-                </span>
-              </div>
-            </li>
-            <li>
-              <img src="test.jpg"></img>
-              <div>
-                <span class="act">
-                  <a href="#">插入</a>
-                  <a href="#">编辑</a>
-                  <a href="#">删除</a>
-                </span>
-              </div>
-            </li>
-
-          </ul>
         </div>
-
       </div>
 
     </div>
