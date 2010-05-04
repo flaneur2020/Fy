@@ -1,0 +1,125 @@
+/***********************************
+ * HEAD
+ *  nav
+ *  sub-nav
+***********************************/
+
+#head {
+}
+
+#head h1 {
+    float: right;
+    padding: 10px 20px 5px 5px;
+    font: normal 13px arial;
+    color: #B1D3EC;
+}
+#head h1 a {
+    color: #fff;
+}
+
+#head ul.nav {
+    background: #0066B2;
+}
+
+#head ul.nav li {
+    display: inline;
+}
+
+#head ul.nav li a {
+    padding: 10px 13px 10px 13px;
+    font: bold 17px arial;
+    line-height: 39px;
+    color: #B1D3EC;
+}
+#head ul.nav li a.cur {
+    background: #B1D3EC;
+    color: #000;
+}
+
+#head ul.sub-nav {
+    font: normal 10px arial;
+    line-height: 20px;
+    background: #B1D3EC;
+}
+#head ul.sub-nav li a {
+    padding: 10px 10px 10px 10px;
+    font: normal 13px arial;
+    line-height: 35px;
+    color: #000;
+}
+
+#head ul.sub-nav li:after {
+    content: "|";
+}
+
+#foot {
+    margin: auto;
+    padding: 20px 0 10px 0;
+    color: #eee;
+    width: 1000px;
+}
+
+/***********************************
+ * MAIN
+***********************************/
+
+#main {
+    padding: 20px 5px 35px 35px;
+    margin: auto;
+    width: 1000px;
+    background: #FDFDFD;
+    overflow: auto;
+}
+
+#main h1 {
+    font: normal 40px arial;
+    margin: 0 0 10px -20px;
+}
+
+#main .notice{
+    display: block;
+    width: 97%;
+    margin: 0 0 5px 0px;
+    padding: 5px;
+    border: 1px solid #FFCC00;
+    background: #FFFFBF;
+}
+
+#main .notice.error{
+    display: block;
+    border: 1px solid #FF0000;
+    background: #FFBFBF;
+}
+
+/*=layout */
+/* for new */
+#main #left {
+    width: 680px;
+    float: left;
+    margin: 0 10px 0 0px;
+}
+#main #right {
+    width: 300px;
+    float: left;
+}
+
+/*=block */
+.blc {
+    margin: 10px 10px 10px 0;
+    border: 1px solid #DFE8EF;
+}
+.blc h2 { 
+    background: #B1D3EC;
+    font: normal 14px arial; 
+    padding: 5px 5px 5px 5px; 
+}
+.blc .content { 
+    padding: 10px; 
+    background: #F7F9FB; 
+}
+
+.blc-raw {
+    margin: 0 10px 10px 0;
+}
+
+

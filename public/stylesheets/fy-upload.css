@@ -1,0 +1,44 @@
+#main {
+  width: 360px;
+  background: #fff;
+  margin: 0 auto;
+  padding: 20px 20px 20px 20px;
+}
+
+/* in the page upload/add */
+#main #btn-upload {
+  float: right;
+}
+
+/* in the page upload/list */
+#main #list-upload {
+  
+}
+#main #list-upload li {
+  display: block;
+  width: 400px;
+  padding: 5px 0 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#main #list-upload li img {
+  width: 68px;
+  height: 68px;
+  float: left;
+}
+
+#main #list-upload li .desc {
+  float: left;
+  width: 260px;
+  margin: 0 0 0 10px;
+}
+
+#main #list-upload li .act {
+  float: right;
+  position: relative;
+  top: 50px;
+  bottom: 0px;
+}
+
+
+
