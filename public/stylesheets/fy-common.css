@@ -58,6 +58,10 @@ h1 {
     font: normal 20px arial;
 }
 
+h2 {
+    font: border 15px arial;
+}
+
 p {
     font: normal 14px arial;
     padding: 0 0 5px 0;

@@ -76,6 +76,11 @@
     margin: 0 0 10px -20px;
 }
 
+#main h2 {
+    font: normal 20px arial;
+    margin: 0 0 5px -10px;
+}
+
 #main .notice{
     display: block;
     width: 97%;

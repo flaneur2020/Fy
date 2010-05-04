@@ -54,6 +54,8 @@
 
   <div id="right" style="width: 400px; ">
 
+    <!--TODO make it blc-raw -->
+    <h2>新目录</h2>
     <div> 
       <% form_for :category, :url=>{:action=>:save}, :html=>{:id=>'category_form'} do |f| %>
         <%= hidden_field_tag :id, @category.id %>
