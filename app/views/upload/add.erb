@@ -3,6 +3,7 @@
     <script></script>
     <style>
       @import url(/stylesheets/fy-common.css);
+      @import url(/stylesheets/fy-notice.css);
       @import url(/stylesheets/fy-upload.css);
     </style>
   </head>
@@ -14,10 +15,14 @@
     </div>
 
     <div id="main">
-      <form>
-        <input type="file" />
-        <button id="btn-upload">上传</button>
-      </form>
+
+      <%= fy_notice %>
+
+      <%form_for :upload, :url=>{:action=>:create}, :html=>{:id=>'form_upload', :multipart => true} do |f| %>
+        <%= f.file_field :uploaded_data %>
+        <button>上传</button>
+      <%end%><%#form%>
+
     </div>
 
   </body>

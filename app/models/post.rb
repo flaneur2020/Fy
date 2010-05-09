@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
                           :in => %w{draft published removed},
                           :message => ' can just in %w{draft published removed}'
 
+  # TODO: rename it as trash
   def remove
     self.state = 'removed'
   end

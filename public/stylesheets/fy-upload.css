@@ -20,39 +20,36 @@ body {
 }
 
 /* in the page upload/add */
-#main #btn-upload {
+#main #form_upload button {
   float: right;
 }
 
 /* in the page upload/list */
-#main #list-upload {
+#main #list_upload {
   
 }
-#main #list-upload li {
+#main #list_upload li {
   display: block;
   padding: 5px 0 5px 0;
   border-bottom: 1px solid #eee;
   overflow: auto;
 }
 
-#main #list-upload li img {
+#main #list_upload li img {
   width: 70px;
   height: 70px;
   float: left;
 }
 
-#main #list-upload li .desc {
+#main #list_upload li .desc {
   width: 280px;
   margin: 0 0 0 75px;
 }
 
-#main #list-upload li .act {
+#main #list_upload li .act {
   float: right;
   z-index: 100;
   float: right;
   position: relative;
   bottom: 0px;
 }
-
-
-

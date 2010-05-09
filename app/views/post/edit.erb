@@ -9,11 +9,11 @@
 <script type="text/javascript" src="/javascripts/vendor/colorbox/jquery.colorbox.js"></script> 
 <script>
   $(function(){
-      // init lightbox
-    $('.show_lightbox_upload_add').colorbox({
+    // init lightbox
+    $('.show_lightbox').colorbox({
       iframe: true,
       innerWidth: 420,
-      innerHeight: '75%'
+      innerHeight: 500
     });
 
     // init editor
@@ -36,23 +36,25 @@
     <%= hidden_field_tag 'post[state]', @post.state || 'draft' %>
 
     <div id="left">
-
       <div class="blc-raw blc-edit">
         <label>标题</label>
         <p>
         <%= f.text_field :title, :class => 'title' %>
         </p>
+
         <label>内容</label>
-          <a class="show_lightbox_upload_add" href="/upload/add">上传图片(0) </a>| 文件(0)
+        <%= link_to('上传图片', 
+                    {:controller=>:upload, :action=>:add, :post_id=>@post.id}, 
+                    {:class=>'show_lightbox'}) if @post.id %>
         <p>
         <%= f.text_area :content %>
         </p>
+
       </div>
 
-      <div class="blc blc-upload">
-        <h2>上传</h2> 
+      <div class="blc blc-misc">
+        <h2>杂项</h2> 
         <div class="content">
-          <button>新上传</button>
         </div>
       </div>
 
@@ -63,10 +65,17 @@
         <h2>发布</h2> 
         <div class="content">
           <p>状态：<%=@post.state%></p>
-          <p>操作：
-              <button>保存</button>
-              <%=link_to '发布', :action=>:publish, :id=>@post.id if @post.id %>
-              <%=link_to '删除', {:action=>:rm, :id=>@post.id}, {:confirm=>"你真的要删除文章'"+@post.title+"'么？", :style=>'color:red'} if @post.id %>
+
+          <p>
+          操作：
+          <button>保存</button>
+            <span class="act on-eidt">
+              <%=link_to('发布', 
+                         :action=>:publish, :id=>@post.id) if @post.id %>
+              <%=link_to('删除', 
+                         {:action=>:rm, :id=>@post.id}, 
+                         {:confirm=>"真的要删除文章'#{@post.title}'？", :style=>'color:red'}) if @post.id %>
+            </span>
           </p>
         </div>
       </div>
@@ -81,6 +90,6 @@
   <% end %><%#form%>
 </div>
 
-<%= render :partial=>'share/foot'%>
+  <%= render :partial=>'share/foot'%>
 
 

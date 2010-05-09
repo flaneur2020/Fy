@@ -22,6 +22,20 @@ class DbInit < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :uploads do |t|
+      t.integer  :user_id
+      t.integer  :post_id
+      t.timestamp
+      # for plugin attachment_fu
+      t.integer  :size
+      t.string   :content_type
+      t.string   :filename
+      t.string   :thumbnail
+      t.integer  :parent_id
+      t.integer  :width
+      t.integer  :height
+    end
+
     # init users
     User.create(
       :name=>'root', 
@@ -68,5 +82,6 @@ class DbInit < ActiveRecord::Migration
       drop_table :users
       drop_table :posts
       drop_table :categories
+      drop_table :uploads
   end
 end

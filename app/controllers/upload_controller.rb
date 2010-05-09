@@ -11,6 +11,19 @@ class UploadController < ApplicationController
   def add
   end
 
+  def create
+    @upload = Upload.new(params[:upload])
+    if request.post?
+      if @upload.save 
+        flash[:notice] = 'uploaded successfully'
+        redirect_to :action => :list
+      else
+        flash[:errors] = @upload.errors
+        render :action => :add
+      end
+    end
+  end
+
   # edit info on image
   def edit
   end
@@ -20,6 +33,5 @@ class UploadController < ApplicationController
 
   def rm
   end
-
 
 end
