@@ -15,25 +15,22 @@
     </div>
 
     <div id="main">
-      <span class="notice">
-        blah~
-      </span>
+      <%= fy_notice %>
 
       <ul id="list_upload">
 
-        <% for u in @uploads%>
+        <% for u in @uploads %>
         <li>
           <img src="<%=u.attach.url(:thumb)%>" />
           <div class="desc">
-            <p>est test test test test test </p>
-            <i><%=u.attach.url%></i> <br/> 
-            <%=u.attach.size/1000%>kb <br/>
-            <i>by</i> <a href="#"><%=%></a>
-            <i><%=u.user.name rescue ''%></i>
+            <br />
+            <i><%=u.attach.url%></i>    <br/> 
+            <%=u.attach.size/1000%>kb   <br/>
+            by <i><%=u.user.name rescue ''%></i>
             <span class="act">
               <a href="">插入</a>
               <a href="">编辑</a>
-              <a href="">删除</a>
+              <%=link_to '删除', {:action=>:rm, :id=>u.id}, {:confirm=>"真的要删除'#{u.attach.url}'？"}%>
             </span>
           </div>
         </li>

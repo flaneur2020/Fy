@@ -32,6 +32,14 @@ class UploadController < ApplicationController
   end
 
   def rm
+    @upload = Upload.find(params[:id])
+    if @upload.destroy
+      flash[:notice] = 'removed successfully'
+      redirect_to :action => :list
+    else
+      flash[:errors] = @upload.errors
+      redirect_to :action => :list
+    end
   end
 
 end

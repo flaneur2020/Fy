@@ -32,7 +32,10 @@ body {
   display: block;
   padding: 5px 0 5px 0;
   border-bottom: 1px solid #eee;
-  overflow: auto;
+  overflow: hidden;
+}
+
+#main #list_upload li i {
 }
 
 #main #list_upload li img {

@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
 
   def can(name)
   end
+
 end
