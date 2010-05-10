@@ -90,4 +90,3 @@ ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(
   :date_time24  => "%Y/%m/%d %H:%M"
 )
 
-

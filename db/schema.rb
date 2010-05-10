@@ -29,15 +29,12 @@ ActiveRecord::Schema.define(:version => 20100411054120) do
   end
 
   create_table "uploads", :force => true do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-    t.integer "size"
-    t.string  "content_type"
-    t.string  "filename"
-    t.string  "thumbnail"
-    t.integer "parent_id"
-    t.integer "width"
-    t.integer "height"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.string   "attach_file_name"
+    t.string   "attach_content_type"
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
   end
 
   create_table "users", :force => true do |t|

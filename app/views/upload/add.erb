@@ -18,8 +18,9 @@
 
       <%= fy_notice %>
 
-      <%form_for :upload, :url=>{:action=>:create}, :html=>{:id=>'form_upload', :multipart => true} do |f| %>
-        <%= f.file_field :uploaded_data %>
+      <%form_for :upload, :url=>{:action=>:add}, :html=>{:id=>'form_upload', :multipart => true} do |f| %>
+        <%= f.hidden_field :post_id, :value=> @post_id %>
+        <%= f.file_field :attach %>
         <button>上传</button>
       <%end%><%#form%>
 

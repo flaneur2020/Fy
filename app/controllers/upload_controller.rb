@@ -5,14 +5,14 @@ class UploadController < ApplicationController
   end
 
   def list
+    @uploads = Upload.find(:all)
   end
 
   # add an image here
   def add
-  end
-
-  def create
     @upload = Upload.new(params[:upload])
+    @upload.user = current_user
+    @upload.post_id = params[:post_id]
     if request.post?
       if @upload.save 
         flash[:notice] = 'uploaded successfully'

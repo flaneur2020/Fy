@@ -3,7 +3,7 @@
     <script></script>
     <style>
       @import url(/stylesheets/fy-common.css);
-      @import url(/stylesheets/fy-default.css);
+      @import url(/stylesheets/fy-notice.css);
       @import url(/stylesheets/fy-upload.css);
     </style>
   </head>
@@ -20,13 +20,16 @@
       </span>
 
       <ul id="list_upload">
+
+        <% for u in @uploads%>
         <li>
-          <img src="bla.jpg" />
+          <img src="<%=u.attach.url(:thumb)%>" />
           <div class="desc">
             <p>est test test test test test </p>
-            <i>upload/test.jpg</i> 120kb <br/>
-            <i>by</i> <a href="#">Fleurer</a>
-            <i>2 min ago</i>
+            <i><%=u.attach.url%></i> <br/> 
+            <%=u.attach.size/1000%>kb <br/>
+            <i>by</i> <a href="#"><%=%></a>
+            <i><%=u.user.name rescue ''%></i>
             <span class="act">
               <a href="">插入</a>
               <a href="">编辑</a>
@@ -34,34 +37,7 @@
             </span>
           </div>
         </li>
-
-        <li>
-          <img src="bla.jpg" />
-          <div class="desc">
-            <p>test test test test test test test test test test test test test test test test test test test </p>
-            <i>upload/test.jpg</i> 120kb <br/>
-            <i>by</i> <a href="#">Fleurer</a>
-            <i>2 min ago</i>
-            <span class="act">
-              <a href="">插入</a>
-              <a href="">编辑</a>
-              <a href="">删除</a>
-            </span>
-          </div>
-        </li>
-
-        <li>
-          <img src="bla.jpg" />
-          <div class="desc">
-            <p>test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test </p>
-            <i>upload/test.jpg</i>
-            <span class="act">
-              <a href="">插入</a>
-              <a href="">编辑</a>
-              <a href="">删除</a>
-            </span>
-          </div>
-        </li>
+        <% end %>
 
       </ul>
 

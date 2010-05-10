@@ -23,17 +23,13 @@ class DbInit < ActiveRecord::Migration
     end
 
     create_table :uploads do |t|
-      t.integer  :user_id
-      t.integer  :post_id
-      t.timestamp
-      # for plugin attachment_fu
-      t.integer  :size
-      t.string   :content_type
-      t.string   :filename
-      t.string   :thumbnail
-      t.integer  :parent_id
-      t.integer  :width
-      t.integer  :height
+      t.integer   :user_id
+      t.integer   :post_id
+      # for paperclip
+      t.string    :attach_file_name
+      t.string    :attach_content_type
+      t.integer   :attach_file_size  
+      t.datetime  :attach_updated_at
     end
 
     # init users

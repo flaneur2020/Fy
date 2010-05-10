@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :posts
+  has_many :uploads, :through=>:posts
 
   def self.login(name, pass)
     user = User.find_by_name(name)
