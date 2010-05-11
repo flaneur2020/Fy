@@ -25,6 +25,7 @@ class DbInit < ActiveRecord::Migration
     create_table :uploads do |t|
       t.integer   :user_id
       t.integer   :post_id
+      t.timestamps
       # for paperclip
       t.string    :attach_file_name
       t.string    :attach_content_type

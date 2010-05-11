@@ -19,20 +19,20 @@
 
       <ul id="list_upload">
 
-        <% for u in @uploads %>
+        <% for upload in @uploads %>
         <li>
-          <img src="<%=u.url(:thumb)%>" />
+          <img src="<%=upload.url(:thumb)%>" />
           <div class="desc">
-            <br />
-            <i><%=u.basename%></i>    <br/> 
-            <%=u.size/1000%>kb   <br/>
-            by <i><%=u.user.name rescue ''%></i>
+            <i><%=upload.basename%></i>    <br/> 
+            <i><%=upload.basename%></i>    <br/> 
+            <%=upload.size/1000%>kb        <br/>
+            <%=upload.created_at%> by <i><%=upload.user.name rescue ''%></i>
+          </div>
             <span class="act">
               <a href="">插入</a>
               <a href="">编辑</a>
-              <%=link_to '删除', {:action=>:rm, :id=>u.id}, {:confirm=>"真的要删除'#{u.attach.url}'？"}%>
+              <%=link_to '删除', {:action=>:rm, :id=>upload.id}, {:confirm=>"真的要删除'#{upload.basename}'？"}%>
             </span>
-          </div>
         </li>
         <% end %><%#for%>
 

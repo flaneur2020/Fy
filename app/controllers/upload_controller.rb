@@ -5,7 +5,7 @@ class UploadController < ApplicationController
   end
 
   def list
-    @uploads = Upload.find(:all)
+    @uploads = Upload.find(:all, :order=>'updated_at desc')
   end
 
   # add an image here

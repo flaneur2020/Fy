@@ -15,24 +15,25 @@ body {
   width: 360px;
   background: #fff;
   margin: 0 auto;
-  padding: 20px 20px 20px 20px;
+  padding: 10px 20px 20px 20px;
   font: normal 12px arial;
 }
 
 /* in the page upload/add */
 #main #form_upload button {
-  float: right;
+}
+#main #form_upload input[type="file"] {
+  border: #eee 1px solid; 
+  padding: 1px;
 }
 
 /* in the page upload/list */
 #main #list_upload {
-  
 }
+
 #main #list_upload li {
-  display: block;
   padding: 5px 0 5px 0;
   border-bottom: 1px solid #eee;
-  overflow: hidden;
 }
 
 #main #list_upload li i {
@@ -50,8 +51,6 @@ body {
 }
 
 #main #list_upload li .act {
-  float: right;
-  z-index: 100;
   float: right;
   position: relative;
   bottom: 0px;
