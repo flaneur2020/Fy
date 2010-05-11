@@ -1,0 +1,15 @@
+#main .notice{
+    display: block;
+    width: 97%;
+    margin: 0 0 5px 0px;
+    padding: 5px;
+    border: 1px solid #FFCC00;
+    background: #FFFFBF;
+}
+
+#main .notice.error{
+    display: block;
+    border: 1px solid #FF0000;
+    background: #FFBFBF;
+}
+
