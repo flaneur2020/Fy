@@ -6,6 +6,8 @@
       @import url(/stylesheets/fy-notice.css);
       @import url(/stylesheets/fy-upload.css);
     </style>
+
+    <title>上传</title>
   </head>
 
   <body>
@@ -23,15 +25,14 @@
         <li>
           <img src="<%=upload.url(:thumb)%>" />
           <div class="desc">
-            <i><%=upload.basename%></i>    <br/> 
-            <i><%=upload.basename%></i>    <br/> 
-            <%=upload.size/1000%>kb        <br/>
-            <%=upload.created_at%> by <i><%=upload.user.name rescue ''%></i>
+            <span class="title"><%=upload.basename%></i></span> 
+            <span class="size"><%=upload.size/1000%>kb</span>
+            <span class="misc"><%=upload.created_at%> by <i><%=upload.user.name rescue ''%></i></span>
           </div>
             <span class="act">
               <a href="">插入</a>
               <a href="">编辑</a>
-              <%=link_to '删除', {:action=>:rm, :id=>upload.id}, {:confirm=>"真的要删除'#{upload.basename}'？"}%>
+              <%=link_to '删除', {:action=>:rm, :id=>upload.id}, {:style=>'color:red;', :confirm=>"真的要删除'#{upload.basename}'？"}%>
             </span>
         </li>
         <% end %><%#for%>

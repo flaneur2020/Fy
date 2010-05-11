@@ -45,8 +45,8 @@
   <body>
     <div id="head">
       <h1 id="name">欢迎，
-        <%= link_to @current_user.name %> |
-        <%= link_to '注销', :controller=>:admin, :action=>:logout %>
+        <%= link_to @current_user.name -%> |
+        <%= link_to '注销', :controller=>:admin, :action=>:logout -%>
       </h1>
       <ul class="nav">
         <%=
@@ -57,7 +57,7 @@
         -%>
       </ul>
       <ul class="nav sub-nav">
-        <% for name, url in sub_tabs %>
+        <% for name, url in sub_tabs -%>
           <li><a href="<%=url%>"><%=name%></a></li>
         <% end -%>
       </ul>

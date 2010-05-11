@@ -3,7 +3,7 @@ body {
 }
 
 #head {
-  width: 360px;
+  width: 400px;
   background: #fff;
   margin: 0 auto;
   padding: 10px 20px 5px 20px;
@@ -12,7 +12,7 @@ body {
 }
 
 #main {
-  width: 360px;
+  width: 400px;
   background: #fff;
   margin: 0 auto;
   padding: 10px 20px 20px 20px;
@@ -20,6 +20,8 @@ body {
 }
 
 /* in the page upload/add */
+#main #form_upload {
+}
 #main #form_upload button {
 }
 #main #form_upload input[type="file"] {
@@ -33,25 +35,39 @@ body {
 
 #main #list_upload li {
   padding: 5px 0 5px 0;
+  display: block;
+  width: 100%;
   border-bottom: 1px solid #eee;
-}
-
-#main #list_upload li i {
+  overflow: hidden;
+  position: relative;
 }
 
 #main #list_upload li img {
-  width: 70px;
-  height: 70px;
   float: left;
+  width: 120px;
+  overflow: hidden;
 }
 
 #main #list_upload li .desc {
-  width: 280px;
-  margin: 0 0 0 75px;
+  margin: 0 0 0 125px;
+}
+
+#main #list_upload li .desc span {
+  width: 60%;
+  float: left;
+  color: #bbb;
+}
+#main #list_upload li .desc span.title {
+  color: #555;
 }
 
 #main #list_upload li .act {
-  float: right;
-  position: relative;
-  bottom: 0px;
+  position: absolute;
+  z-index: 100;
+  bottom: 5px;
+  right: 0px;
+  display: none;
+}
+#main #list_upload li:hover .act {
+  display: block;
 }

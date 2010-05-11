@@ -135,6 +135,9 @@ TINY.editor=function(){
 		var val=prompt(pro,msg);
 		if(val!=null&&val!=''){this.e.execCommand(cmd,0,val)}
 	},
+  edit.prototype.insertImage=function(url){
+    this.e.execCommand('insertImage', 0, url);
+  },
 	edit.prototype.setfont=function(){
 		execCommand('formatblock',0,hType)
 	},
