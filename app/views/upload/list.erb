@@ -21,11 +21,11 @@
 
         <% for u in @uploads %>
         <li>
-          <img src="<%=u.attach.url(:thumb)%>" />
+          <img src="<%=u.url(:thumb)%>" />
           <div class="desc">
             <br />
-            <i><%=u.attach.url%></i>    <br/> 
-            <%=u.attach.size/1000%>kb   <br/>
+            <i><%=u.attach%></i>    <br/> 
+            <%=u.size/1000%>kb   <br/>
             by <i><%=u.user.name rescue ''%></i>
             <span class="act">
               <a href="">插入</a>
@@ -34,7 +34,7 @@
             </span>
           </div>
         </li>
-        <% end %>
+        <% end %><%#for%>
 
       </ul>
 
