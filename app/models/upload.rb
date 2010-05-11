@@ -15,7 +15,9 @@ class Upload < ActiveRecord::Base
 
   def_delegators :attach, :url, :size
 
+  # name might like "name.jpg?3289392", strip the godam '?'
   def basename
+    File.basename(self.attach.url).split(/\?/)[0]
   end
 
 end
