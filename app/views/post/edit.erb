@@ -15,15 +15,15 @@
       innerWidth: 500,
       innerHeight: 500
     });
+    window.fyLightBox = $.fn.colorbox;
 
     // init editor
     var editor = init_editor('post_content');
+    window.fyMainEditor = editor;
     $('#post_form').bind('submit', function(){
       editor.post();
     });
-
   });
-
 </script>
 
 <div id="main">
