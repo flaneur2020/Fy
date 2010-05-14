@@ -2,28 +2,28 @@
   title  ||= '首页'
   cur    ||= :home
   styles ||= []
-  tabs = {
-    :home => [
+  tabs = [
+    [:home, [
       ['首页',   url_for(:controller => :admin)],
-    ],
-    :post => [
+    ]],
+    [:post, [
       ['文章',   url_for(:controller => :post)],
       ['新文章', url_for(:action => :add)],
       ['管理',   url_for(:action => :list)],
       ['已发布', url_for(:action => :list, :state => :published)],
       ['草稿',   url_for(:action => :list, :state => :draft)],
       ['回收站', url_for(:action => :list, :state => :removed)]
-    ],
-    :category => [
+    ]],
+    [:category, [
       ['目录',    url_for(:controller => :category)],
       ['新目录',  url_for(:action => :add)],
       ['管理',    url_for(:action => :list)]
-    ]
-  }
-  current_tab = tabs[cur]
+    ]]
+  ]
+  current_tab = tabs.select{|t| t[0]==cur }[0][1]
+  sub_tabs = current_tab[1..-1]
   selected_tab = {}
   selected_tab[cur] = 'class="cur"'
-  sub_tabs = current_tab[1..-1]
 %>
 
 <html>

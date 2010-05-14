@@ -20,18 +20,18 @@ body {
 }
 
 /* in the list page */
-#main form#upload {
+#main form#attach {
 }
-#main form#upload input[type="file"] {
+#main form#attach input[type="file"] {
   border: #eee 1px solid; 
   padding: 1px;
 }
 
-/*= in the page upload/list */
-#main div#uploads {
+/*= in the page attach/list */
+#main div#attach {
 }
 
-#main div.upload {
+#main div.attach {
   padding: 5px 5px 5px 5px;
   display: block;
   width: 100%;
@@ -40,36 +40,36 @@ body {
   position: relative;
 }
 
-#main div.upload img {
+#main div.attach img {
   float: left;
   width: 120px;
   height: 120px;
   overflow: hidden;
 }
 
-#main div.upload .desc {
+#main div.attach .desc {
   margin: 0 0 0 125px;
 }
 
-#main div.upload .desc span {
+#main div.attach .desc span {
   width: 60%;
   float: left;
   color: #bbb;
 }
-#main div.upload .desc span.title {
+#main div.attach .desc span.title {
   color: #555;
 }
 
-#main div.upload .act {
+#main div.attach .act {
   position: absolute;
   z-index: 100;
   bottom: 5px;
   right: 10px;
   display: none;
 }
-#main div.upload:hover {
+#main div.attach:hover {
   background: #eee;
 }
-#main div.upload:hover .act {
+#main div.attach:hover .act {
   display: block;
 }

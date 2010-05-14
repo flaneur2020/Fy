@@ -4,7 +4,7 @@
     <style>
       @import url(/stylesheets/fy-common.css);
       @import url(/stylesheets/fy-notice.css);
-      @import url(/stylesheets/fy-upload.css);
+      @import url(/stylesheets/fy-attach.css);
     </style>
     <script>
       var colorbox = window.parent.FyLightBox;
@@ -23,18 +23,18 @@
   <body>
 
     <div id="head">
-      上传 | 
-      <a href="/upload/list/<%=@upload.post_id%>">相册<%=@upload.post.uploads.size%></a> |
-      <a href="/upload/list">媒体库</a>
+      <a href="/attach/add/?post_id=<%=params[:post_id]%>">上传</a> |
+      <a href="/attach/list/<%=params[:post_id]%>?post_id=<%=params[:post_id]%>">相册(<%=Post.find(params[:post_id]).attaches.size%>)</a> |
+      <a href="/attach/list/?post_id=<%=params[:post_id]%>">媒体库</a>
     </div>
 
     <div id="main">
 
       <%= fy_notice %>
 
-      <%form_for :upload, :url=>{:action=>:add}, :html=>{:id=>'upload', :multipart => true} do |f| %>
-        <%= f.hidden_field :post_id, :value=> @post_id %>
-        <%= f.file_field :attach %>
+      <%form_for :attach, :url=>{:action=>:add}, :html=>{:id=>'attach', :multipart => true} do |f| %>
+        <%= f.hidden_field :post_id, :value=> @attach.post_id %>
+        <%= f.file_field :upload %>
         <button>上传</button>
       <%end%><%#form%>
 

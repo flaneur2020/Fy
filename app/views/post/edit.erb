@@ -44,7 +44,7 @@
 
         <label>内容</label>
         <%= link_to('上传图片', 
-                    {:controller=>:upload, :action=>:add, :post_id=>@post.id}, 
+                    {:controller=>:attach, :action=>:add, :post_id=>@post.id}, 
                     {:class=>'show_lightbox'}) if @post.id %>
         <p>
         <%= f.text_area :content %>

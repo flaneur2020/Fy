@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
-  has_many :uploads
+  has_many :attaches
 
   # validations 
   validates_presence_of   :user
