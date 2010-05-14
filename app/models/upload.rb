@@ -11,10 +11,10 @@ class Upload < ActiveRecord::Base
   # for plugin Paperclip
   validates_attachment_presence :attach
   has_attached_file :attach,
-                    :styles => { :medium => "300x300>", :thumb => "150x150>" },
+                    :styles => { :medium => "300x300>", :thumb => "150x150" },
                     :url => "/uploads/:attachment/:id/:basename.:style.:extension"
 
-  def_delegators :attach, :url, :size
+  def_delegators :attach, :url, :size, :content_type
 
   # name might like "name.jpg?3289392", strip the godam '?'
   def basename

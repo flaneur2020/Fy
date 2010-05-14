@@ -18,7 +18,6 @@ a:hover {
 }
 
 input[type="text"] {
-    width: 95%;
     font: normal 14px arial;
     height: 25px;
     border: 1px solid #ccc;

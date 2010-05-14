@@ -19,20 +19,20 @@ body {
   font: normal 12px arial;
 }
 
-/* in the page upload/add */
-#main #form_upload {
+/* in the list page */
+#main form#upload {
 }
-#main #form_upload input[type="file"] {
+#main form#upload input[type="file"] {
   border: #eee 1px solid; 
   padding: 1px;
 }
 
-/* in the page upload/list */
-#main #list_upload {
+/*= in the page upload/list */
+#main div#uploads {
 }
 
-#main #list_upload li {
-  padding: 5px 0 5px 0;
+#main div.upload {
+  padding: 5px 5px 5px 5px;
   display: block;
   width: 100%;
   border-bottom: 1px solid #eee;
@@ -40,32 +40,36 @@ body {
   position: relative;
 }
 
-#main #list_upload li img {
+#main div.upload img {
   float: left;
   width: 120px;
+  height: 120px;
   overflow: hidden;
 }
 
-#main #list_upload li .desc {
+#main div.upload .desc {
   margin: 0 0 0 125px;
 }
 
-#main #list_upload li .desc span {
+#main div.upload .desc span {
   width: 60%;
   float: left;
   color: #bbb;
 }
-#main #list_upload li .desc span.title {
+#main div.upload .desc span.title {
   color: #555;
 }
 
-#main #list_upload li .act {
+#main div.upload .act {
   position: absolute;
   z-index: 100;
   bottom: 5px;
-  right: 0px;
+  right: 10px;
   display: none;
 }
-#main #list_upload li:hover .act {
+#main div.upload:hover {
+  background: #eee;
+}
+#main div.upload:hover .act {
   display: block;
 }

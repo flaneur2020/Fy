@@ -23,14 +23,16 @@
   <body>
 
     <div id="head">
-      上传 | <a href="/upload/list">媒体库</a>
+      上传 | 
+      <a href="/upload/list/<%=@upload.post_id%>">相册<%=@upload.post.uploads.size%></a> |
+      <a href="/upload/list">媒体库</a>
     </div>
 
     <div id="main">
 
       <%= fy_notice %>
 
-      <%form_for :upload, :url=>{:action=>:add}, :html=>{:id=>'form_upload', :multipart => true} do |f| %>
+      <%form_for :upload, :url=>{:action=>:add}, :html=>{:id=>'upload', :multipart => true} do |f| %>
         <%= f.hidden_field :post_id, :value=> @post_id %>
         <%= f.file_field :attach %>
         <button>上传</button>

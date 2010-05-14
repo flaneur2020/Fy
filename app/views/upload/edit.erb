@@ -3,17 +3,28 @@
     <script></script>
     <style>
       @import url(/stylesheets/fy-common.css);
+      @import url(/stylesheets/fy-notice.css);
       @import url(/stylesheets/fy-upload.css);
     </style>
+    <title>上传</title>
   </head>
 
   <body>
 
+    <div id="head">
+      <a href="/upload/add">上传</a> | 
+      <a href="/upload/list">媒体库</a>
+    </div>
+
     <div id="main">
-      <form>
-        <input type="file" />
-        <button id="btn-upload">上传</button>
-      </form>
+      <div class="upload">
+        <img src="<%=@upload.url(:thumb)%>" />
+        <div class="desc">
+          <span class="title"><%=@upload.basename%></i></span> 
+          <span class="size"><%=@upload.size/1000%>kb</span>
+          <span class="misc"><%=@upload.created_at%> by <i><%=@upload.user.name rescue ''%></i></span>
+        </div>
+      </div>
     </div>
 
   </body>

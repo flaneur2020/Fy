@@ -5,14 +5,18 @@ class UploadController < ApplicationController
   end
 
   def list
-    @uploads = Upload.find(:all, :order=>'updated_at desc')
+    cond = []
+    cond = ['post_id', params[:post_id]] if params[:post_id]
+    @uploads = Upload.find(:all, 
+                           :conditions=> cond,
+                           :order=>'updated_at desc')
   end
 
   # add an image here
   def add
     @upload = Upload.new(params[:upload])
     @upload.user = current_user
-    @upload.post_id = params[:post_id]
+    @upload.post = Post.find(params[:post_id])
     if request.post?
       if @upload.save 
         flash[:notice] = 'uploaded successfully'
@@ -22,13 +26,6 @@ class UploadController < ApplicationController
         render :action => :add
       end
     end
-  end
-
-  # edit info on image
-  def edit
-  end
-
-  def save
   end
 
   def rm
