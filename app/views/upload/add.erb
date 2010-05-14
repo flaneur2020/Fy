@@ -6,6 +6,17 @@
       @import url(/stylesheets/fy-notice.css);
       @import url(/stylesheets/fy-upload.css);
     </style>
+    <script>
+      var colorbox = window.parent.FyLightBox;
+      var editor   = window.parent.FyMainEditor;
+      function lightbox_close(){
+        colorbox.close();
+      }
+      function editor_insert_image(url){
+        editor.insertImage(url);
+      }
+    </script>
+
     <title>上传</title>
   </head>
 
@@ -24,8 +35,6 @@
         <%= f.file_field :attach %>
         <button>上传</button>
       <%end%><%#form%>
-
-      <a href="javascript: window.parent.fyLightBox.close()">取消</a>
 
     </div>
 

@@ -6,6 +6,17 @@
       @import url(/stylesheets/fy-notice.css);
       @import url(/stylesheets/fy-upload.css);
     </style>
+    <script>
+      var colorbox = window.parent.fyLightBox;
+      var editor   = window.parent.fyMainEditor;
+      function lightbox_close(){
+        colorbox.close();
+      }
+      function editor_insert_image(url){
+        editor.insertImage(url);
+        lightbox_close();
+      }
+    </script>
 
     <title>上传</title>
   </head>
@@ -30,7 +41,7 @@
             <span class="misc"><%=upload.created_at%> by <i><%=upload.user.name rescue ''%></i></span>
           </div>
             <span class="act">
-              <a href="javascript: alert(window.parent.fyMainEditor);">插入</a>
+              <a href="javascript: editor_insert_image('<%=upload.url%>'); ">插入</a>
               <a href="">编辑</a>
               <%=link_to '删除', {:action=>:rm, :id=>upload.id}, {:style=>'color:red;', :confirm=>"真的要删除'#{upload.basename}'？"}%>
             </span>

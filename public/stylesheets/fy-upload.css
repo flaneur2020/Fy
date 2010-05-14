@@ -22,8 +22,6 @@ body {
 /* in the page upload/add */
 #main #form_upload {
 }
-#main #form_upload button {
-}
 #main #form_upload input[type="file"] {
   border: #eee 1px solid; 
   padding: 1px;
