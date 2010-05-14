@@ -6,3 +6,4 @@ public/cache/**/*
 public/uploads
 *.jpg
 *.gif
+*.sqlite3
