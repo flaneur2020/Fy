@@ -79,6 +79,6 @@ class DbInit < ActiveRecord::Migration
       drop_table :users
       drop_table :posts
       drop_table :categories
-      drop_table :uploads
+      drop_table :attaches
   end
 end

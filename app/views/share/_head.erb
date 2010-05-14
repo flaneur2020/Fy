@@ -4,15 +4,15 @@
   styles ||= []
   tabs = [
     [:home, [
-      ['首页',   url_for(:controller => :admin)],
+      ['首页',   admin_url],
     ]],
     [:post, [
-      ['文章',   url_for(:controller => :post)],
-      ['新文章', url_for(:action => :add)],
-      ['管理',   url_for(:action => :list)],
-      ['已发布', url_for(:action => :list, :state => :published)],
-      ['草稿',   url_for(:action => :list, :state => :draft)],
-      ['回收站', url_for(:action => :list, :state => :removed)]
+      ['文章',   posts_url],
+      ['新文章', new_post_url],
+      ['管理',   posts_url],
+      ['已发布', posts_url(:state => :published)],
+      ['草稿',   posts_url(:state => :draft)],
+      ['回收站', posts_url(:state => :removed)]
     ]],
     [:category, [
       ['目录',    url_for(:controller => :category)],

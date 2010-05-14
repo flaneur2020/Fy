@@ -40,11 +40,19 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   
 
-  #TODO: front pages as /*
-  #TODO: while all admin pages as admin/*
   #map.connect 'admin/:controller/:action/:id'
   #map.connect 'admin/:controller/:action/:id.:format'
 
+  map.admin '/admin', :controller => 'admin'
+
+  map.resources :posts,
+                :member => {
+                  :trash   => :get,
+                  :restore => :get,
+                  :publish => :get
+                }
+               
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
 end

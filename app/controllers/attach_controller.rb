@@ -15,6 +15,11 @@ class AttachController < ApplicationController
                             :order=>'updated_at desc')
   end
 
+  def album
+    @post = Post.find(params[:id])
+    @attaches = @post.attaches
+  end
+
   # add an image here
   def add
     @attach = Attach.new
