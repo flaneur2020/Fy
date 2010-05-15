@@ -12,6 +12,9 @@ class Category < ActiveRecord::Base
     if cate.parent == cate
       cate.errors.add(:category, ' can not set self as parent')
     end
+    if cate.parent.ancestors.include? cate
+      cate.errors.add(:category, ' can not set children as parent')
+    end
   end
 
   # TODO: the first category cannot be destoryed

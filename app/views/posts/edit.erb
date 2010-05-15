@@ -31,7 +31,7 @@
 
   <%= fy_notice %>
 
-  <% form_for :post, :url => { :action=>:save }, :html => {:id=>'post_form'} do |f| %>
+  <% form_for :post, :url => save_post_url(@post), :html => {:id=>'post_form'} do |f| %>
     <%= hidden_field_tag :id, @post.id %>
     <%= hidden_field_tag 'post[state]', @post.state || 'draft' %>
 
@@ -70,11 +70,11 @@
           操作：
           <button>保存</button>
             <span class="act on-eidt">
-              <%=link_to('发布', 
-                         :action=>:publish, :id=>@post.id) if @post.id %>
-              <%=link_to('删除', 
-                         {:action=>:rm, :id=>@post.id}, 
-                         {:confirm=>"真的要删除文章'#{@post.title}'？", :style=>'color:red'}) if @post.id %>
+              <%if @post.id %>
+                <%=link_to('发布', publish_post_url(@post)) %>
+                <%=link_to('删除', trash_post_url(@post), 
+                           {:confirm=>"真的要删除文章'#{@post.title}'？", :style=>'color:red'}) %>
+              <% end %>
             </span>
           </p>
         </div>

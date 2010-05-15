@@ -49,7 +49,8 @@ ActionController::Routing::Routes.draw do |map|
                 :member => {
                   :trash   => :get,
                   :restore => :get,
-                  :publish => :get
+                  :publish => :get,
+                  :save    => :post
                 }
                
   map.connect ':controller/:action/:id'

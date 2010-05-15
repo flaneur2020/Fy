@@ -57,6 +57,7 @@ class PostsController < ApplicationController
     save
   end
 
+  # do REAL destroy
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
@@ -77,6 +78,7 @@ class PostsController < ApplicationController
     redirect_to params.merge(:action => :list)
   end
 
+  # tag it as 'draft'
   def restore
     @post = Post.find(params[:id])
     @post.state = 'draft'
@@ -98,7 +100,6 @@ class PostsController < ApplicationController
       redirect_to edit_post_url(@post)
     end
   end
-
 
   # add, eidt => save 
   # if title in form is '', make it "(untitled)"
