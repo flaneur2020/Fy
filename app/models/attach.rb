@@ -9,8 +9,12 @@ class Attach < ActiveRecord::Base
   validates_presence_of :user
 
   # for plugin Paperclip
-  # TODO: validate content-types
+  # TODO: validate content-types, 
+  # seems bug, when uploading a file whose content-type not included, a 500 internal error ocurred
   validates_attachment_presence :upload
+  validates_attachment_size     :upload,
+                                :less_than => 200.kilobytes
+
   has_attached_file :upload,
                     :styles => { :medium => "300x300>", :thumb => "150x150" },
                     :url => "/uploads/:attachment/:id/:basename.:style.:extension"

@@ -31,7 +31,7 @@
               <th class="name first">
                 <%=h '. . . . '*category.depth %><%=h category.name%>
                 <span class="act">
-                  <%=link_to '添加', {:action=>:add,     :parent_id=>category.id} %> 
+                  <%=link_to '添加', {:action=>:new,     :parent_id=>category.id} %> 
                   <%=link_to '编辑', {:action=>:edit,    :id=>category.id} %> 
                   <%=link_to '删除', {:action=>:rm,      :id=>category.id}, {:confirm=>"真的要删除目录'"+category.name+"'？", :style=>'color:red'} %>
                 </span>
