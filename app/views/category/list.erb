@@ -54,22 +54,35 @@
 
   <div id="right" style="width: 400px; ">
 
+    <div class="blc-raw">
+      <div> 
+        <% form_for :category, :url=>{:action=>:search}, :html=>{:id=>'category_search_form'} do |f| %>
+          <p> 
+          <label>目录名</label><br/>
+          <%= text_field_tag :name, '' %>
+          <button>搜索</button>
+          </p>
+        <% end %>
+      </div>
+    </div>
+
     <!--TODO make it blc-raw -->
-    <h2>新目录</h2>
-    <div> 
-      <% form_for :category, :url=>{:action=>:save}, :html=>{:id=>'category_form'} do |f| %>
-        <%= hidden_field_tag :id, @category.id %>
-        <p> 
+    <div class="blc-raw">
+      <h2>新目录</h2>
+      <div> 
+        <% form_for :category, :url=>{:action=>:save}, :html=>{:id=>'category_form'} do |f| %>
+          <p> 
           <label>新建目录名</label><br/>
           <%= f.text_field :name%>
-        </p>
-        <p>
+          </p>
+          <p>
           <label>父级目录</label><br/>
-          <%= fy_category_select_tag :parent_name, (@category.parent.name rescue '') %>
-        </p>
-        <p>
-        <button>保存</button>
-      <% end %>
+          <%= fy_category_select_tag :parent_name, '' %>
+          </p>
+          <p>
+          <button>保存</button>
+        <% end %>
+      </div>
     </div>
 
   </div>

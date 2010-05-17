@@ -42,4 +42,15 @@ class CategoryController < ApplicationController
     redirect_to :action=>:list
   end
 
+  # params[:name]
+  def search
+    @category = Category.find_by_name(params[:name])
+    if @category
+      redirect_to category_url(:edit, @category.id)
+    else
+      flash[:notice] = 'did not find this category '
+      redirect_to category_url(:list)
+    end
+  end
+
 end
