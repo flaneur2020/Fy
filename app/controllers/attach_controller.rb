@@ -1,48 +1,50 @@
 class AttachController < ApplicationController
+  layout 'attach'
+
+  #TODO: must have a post_id
+  # before_filter
 
   def index
-    redirect_to :action => :add
+    redirect_to :new
+  end
+
+  def list_all
+    @attaches = Attach.find(:all, 
+                            :order=>'updated_at desc')
+    render :action => :list
   end
 
   def list
-    cond = []
-    if params[:id]
-      @post = Post.find(params[:id])
-      cond = ["post_id=?", params[:id]]
-    end
     @attaches = Attach.find(:all, 
-                            :conditions => cond,
+                            :conditions => ['post_id=?', params[:post_id]],
                             :order=>'updated_at desc')
-  end
-
-  def album
-    @post = Post.find(params[:id])
-    @attaches = @post.attaches
+    render :action => :list
   end
 
   # add an image here
-  def add
+  def new
+    @post = Post.find(params[:post_id])
     @attach = Attach.new
-    @attach.post_id = params[:post_id]
-    if request.post?
-      @attach = Attach.new(params[:attach])
-      @attach.user = current_user
-      if @attach.save 
-        flash[:notice] = 'uploaded successfully'
-        redirect_to :action => :list, :post_id => @attach.post_id
-      else
-        flash[:errors] = @attach.errors
-        render :action => :add
-      end
+  end
+
+  def save
+    @attach = Attach.new(params[:attach])
+    @attach.user = current_user
+    if @attach.save 
+      flash[:notice] = 'uploaded successfully'
+      redirect_to attach_url(:list, :post_id => @attach.post_id)
+    else
+      flash[:errors] = @attach.errors
+      redirect_to attach_url(:new,  :post_id => @attach.post_id)
     end
   end
 
-  def rm
+  def destroy
     @attach = Attach.find(params[:id])
     post_id = @attach.post_id
     if @attach.destroy
       flash[:notice] = 'removed successfully'
-      redirect_to :action => :list, :post_id => post_id
+      redirect_to attach_url(:list, :post_id => post_id)
     else
       flash[:errors] = @attach.errors
       redirect_to :action => :list

@@ -1,17 +1,8 @@
-class PostsController < ApplicationController
+class PostController < ApplicationController
   before_filter :check_login
-
-  # try the egghurting Restful
-  # 
-  # posts
-  # posts/10
-  # posts/10/new
-  # posts/10/create
-  # posts/10/edit
-  # posts/10/update
-  # #
+  
   #
-  #
+  # egg hurt, put restful aside
   def index
     list
   end
@@ -49,20 +40,12 @@ class PostsController < ApplicationController
     render :action => :edit
   end
 
-  def create
-    save
-  end
-  
-  def update
-    save
-  end
-
   # do REAL destroy
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:notice] = "the post '#{@post.title}' have been deleted"
-      redirect_to posts_url(:state=>:removed)
+      redirect_to post_url(:state=>:removed)
     end
   end
 

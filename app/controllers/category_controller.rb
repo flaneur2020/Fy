@@ -2,15 +2,16 @@ class CategoryController < ApplicationController
   before_filter :check_login
 
   def index
-    redirect_to :action => :list
+    list
   end
 
   def list
     @category = Category.new
     @categories = Category.as_list
+    render :action => :list
   end
 
-  def add
+  def new
     @category = Category.new
     @category.parent = Category.find(params[:parent_id]) if params[:parent_id]
     render :action => :edit
@@ -36,7 +37,8 @@ class CategoryController < ApplicationController
     end
   end
 
-  def rm
+  # TODO
+  def destroy
     redirect_to :action=>:list
   end
 

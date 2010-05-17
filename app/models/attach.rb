@@ -9,6 +9,7 @@ class Attach < ActiveRecord::Base
   validates_presence_of :user
 
   # for plugin Paperclip
+  # TODO: validate content-types
   validates_attachment_presence :upload
   has_attached_file :upload,
                     :styles => { :medium => "300x300>", :thumb => "150x150" },

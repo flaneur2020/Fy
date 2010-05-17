@@ -1,0 +1,11 @@
+<div id="main">
+  <%= fy_notice %>
+
+  <%form_for :attach, :url=>attach_url(:save), :html=>{:id=>'attach', :multipart => true} do |f| %>
+    <%= hidden_field_tag 'attach[post_id]', @post.id %>
+    <%= f.file_field :upload %>
+    <button>上传</button>
+  <%end%><%#form%>
+
+</div>
+

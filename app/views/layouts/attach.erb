@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <script></script>
+    <style>
+      @import url(/stylesheets/fy-common.css);
+      @import url(/stylesheets/fy-notice.css);
+      @import url(/stylesheets/fy-attach.css);
+    </style>
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <script>
+      var pdoc      = window.parent.document;
+      var colorbox  = window.parent.fyLightBox;
+      var editor    = window.parent.fyMainEditor;
+
+      function lightbox_close(){
+        colorbox.close();
+      }
+      function editor_insert_image(url){
+        editor.insertImage(url);
+        colorbox.close();
+      }
+      function get_post_id(){
+        var id = $("#post_form #id", pdoc).val();
+        return id;
+      }
+      $(function(){
+        $('#head a').bind('click', function(){
+          var href=$(this).attr('href');
+          var id = get_post_id().toString();
+          $(this).attr('href', href+'?post_id='+id);
+        });
+      });
+    </script>
+
+    <title>上传</title>
+  </head>
+
+  <body>
+
+    <div id="head">
+      <%= link_to '上传',   attach_url(:new) %> |
+      <%= link_to '相册',   attach_url(:list) %> |
+      <%= link_to '媒体库', attach_url(:list_all) %>
+    </div>
+
+    <%= yield %>
+
+  </body>
+</html>
+

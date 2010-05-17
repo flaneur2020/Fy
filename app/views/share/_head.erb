@@ -7,17 +7,17 @@
       ['首页',   admin_url],
     ]],
     [:post, [
-      ['文章',   posts_url],
-      ['新文章', new_post_url],
-      ['管理',   posts_url],
-      ['已发布', posts_url(:state => :published)],
-      ['草稿',   posts_url(:state => :draft)],
-      ['回收站', posts_url(:state => :removed)]
+      ['文章',   post_url()],
+      ['新文章', post_url(:new)],
+      ['管理',   post_url(:list)],
+      ['已发布', post_url(:list, :state => :published)],
+      ['草稿',   post_url(:list, :state => :draft)],
+      ['回收站', post_url(:list, :state => :removed)]
     ]],
     [:category, [
-      ['目录',    url_for(:controller => :category)],
-      ['新目录',  url_for(:action => :add)],
-      ['管理',    url_for(:action => :list)]
+      ['目录',    category_url],
+      ['新目录',  category_url(:new)],
+      ['管理',    category_url(:list)]
     ]]
   ]
   current_tab = tabs.select{|t| t[0]==cur }[0][1]

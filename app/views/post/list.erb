@@ -37,15 +37,15 @@
             <th class="title first">
               <%=link_to post.title, :action=>:view, :id=>post.id%>
               <span class="act">
-                <%=link_to '查看', post_url(post) %> 
-                <%=link_to '编辑', edit_post_url(post) %> 
-                <%=link_to '删除', trash_post_url(post), {:confirm=>"真的要删除文章'"+post.title+"'嘛？", :style=>'color:red'} %>
+                <%=link_to '查看', :action=>:view,  :id=>post.id %> 
+                <%=link_to '编辑', :action=>:edit,  :id=>post.id %> 
+                <%=link_to '删除', {:action=>:trash, :id=>post.id}, {:confirm=>"真的要删除文章'"+post.title+"'嘛？", :style=>'color:red'} %>
               </span>
               <span class="act2">
                 <%=link_to '查看',     {:action=>:preview, :id=>post.id} %> 
-                <%=link_to '编辑',     {:action=>:edit, :id=>post.id} %> 
-                <%=link_to '还原',     restore_post_url(post) %> 
-                <%=link_to '彻底删除', post_url(post), {:method=>:delete, :confirm=>"该操作不可恢复，确定你要删除文章'"+post.title+"'么？", :style=>'color:red'} %>
+                <%=link_to '编辑',     {:action=>:edit,    :id=>post.id} %> 
+                <%=link_to '还原',     {:action=>:restore, :id=>post.id} %> 
+                <%=link_to '彻底删除', {:action=>:destroy, :id=>post.id}, {:method=>:delete, :confirm=>"该操作不可恢复，确定你要删除文章'"+post.title+"'么？", :style=>'color:red'} %>
               </span>
             </th>
             <th class="category">

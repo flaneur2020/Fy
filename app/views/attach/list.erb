@@ -1,56 +1,22 @@
-<html>
-  <head>
-    <script></script>
-    <style>
-      @import url(/stylesheets/fy-common.css);
-      @import url(/stylesheets/fy-notice.css);
-      @import url(/stylesheets/fy-attach.css);
-    </style>
-    <script>
-      var colorbox = window.parent.fyLightBox;
-      var editor   = window.parent.fyMainEditor;
-      function lightbox_close(){
-        colorbox.close();
-      }
-      function editor_insert_image(url){
-        editor.insertImage(url);
-        lightbox_close();
-      }
-    </script>
+<div id="main">
+  <%= fy_notice %>
 
-    <title>上传</title>
-  </head>
-
-  <body>
-
-    <div id="head">
-      <a href="/attach/add/?post_id=<%=params[:post_id]%>">上传</a> |
-      <a href="/attach/list/<%=params[:post_id]%>?post_id=<%=params[:post_id]%>">相册(<%=Post.find(params[:post_id]).attaches.size%>)</a> |
-      <a href="/attach/list/?post_id=<%=params[:post_id]%>">媒体库</a>
-    </div>
-
-    <div id="main">
-      <%= fy_notice %>
-
-      <div id="attaches">
-        <% for attach in @attaches %>
-        <div class="attach">
-          <img src="<%=attach.url(:thumb)%>" />
-          <div class="desc">
-            <span class="title"><%=attach.basename%></span> 
-            <span class="type"><%=attach.content_type%></span> 
-            <span class="size"><%=attach.size/1000%>kb </span>
-            <span class="misc"><%=attach.created_at%> by <i><%=attach.user.name rescue ''%></i></span>
-          </div>
-          <span class="act">
-            <a href="javascript: editor_insert_image('<%=attach.url%>'); ">插入</a>
-            <%=link_to '删除', {:action=>:rm,   :id=>attach.id}, {:style=>'color:red;', :confirm=>"真的要删除'#{attach.basename}'？"}%>
-          </span>
+  <div id="attaches">
+    <% for attach in @attaches %>
+      <div class="attach">
+        <img src="<%=attach.url(:thumb)%>" />
+        <div class="desc">
+          <span class="title"><%=attach.basename%></span> 
+          <span class="type"><%=attach.content_type%></span> 
+          <span class="size"><%=attach.size/1000%>kb </span>
+          <span class="misc"><%=attach.created_at%> by <i><%=attach.user.name rescue ''%></i></span>
         </div>
-        <% end %><%#for%>
+        <span class="act">
+          <a href="javascript: editor_insert_image('<%=attach.url%>'); ">插入</a>
+          <%=link_to '删除', {:action=>:rm,   :id=>attach.id}, {:style=>'color:red;', :confirm=>"真的要删除'#{attach.basename}'？"}%>
+        </span>
       </div>
+    <% end %><%#for%>
+  </div>
 
-    </div>
-
-  </body>
-</html>
+</div>

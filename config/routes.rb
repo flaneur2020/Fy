@@ -45,14 +45,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.admin '/admin', :controller => 'admin'
 
-  map.resources :posts,
-                :member => {
-                  :trash   => :get,
-                  :restore => :get,
-                  :publish => :get,
-                  :save    => :post
-                }
-               
+  map.post      'post/:action/:id',         :controller => 'post'
+  map.category  'category/:action/:id',     :controller => 'category'
+  map.attach    'attach/:action/:id',       :controller => 'attach'
+  
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 
